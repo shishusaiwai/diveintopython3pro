@@ -155,7 +155,7 @@ body{counter-reset:h1 7}
 <p><em>现在</em> 你已经准备学习如何创建一个迭代器了。 迭代器就是一个定义了 <code>__iter__()</code> 方法的类。
 
 </p><aside class="ots">
-这些类的所有三种方法， <code>__init__</code>， <code>__iter__</code>， 和 <code>__next__</code>， 起始和结束均为一对下划线（<code>_</code>） 字符。 为什么这样？ 并无什么神奇之处， 只是通常表示这是“<dfn>特殊方法</dfn>。” 唯一“特殊”的地方，就是这些方法不是直接调用的； 当你使用类或实例的某些语法时，Python会自动调用他们。 <a href="http://old.sebug.net/paper/books/dive-into-python3/special-method-names.html">更多关于特殊方法</a>。
+这些类的所有三种方法， <code>__init__</code>， <code>__iter__</code>， 和 <code>__next__</code>， 起始和结束均为一对下划线（<code>_</code>） 字符。 为什么这样？ 并无什么神奇之处， 只是通常表示这是“<dfn>特殊方法</dfn>。” 唯一“特殊”的地方，就是这些方法不是直接调用的； 当你使用类或实例的某些语法时，Python会自动调用他们。更多关于特殊方法。
 </aside>
 
 <p class="d">[<a href="http://old.sebug.net/paper/books/dive-into-python3/examples/fibonacci2.py">下载 <code>fibonacci2.py</code></a>]
@@ -370,7 +370,7 @@ rules = LazyRules()</code></pre>
 
 <blockquote class="note">
 <p><span class="u">☞</span>这真的是极乐世界？ 嗯，是或不是。 这里有一些<code>LazyRules</code> 示例需要细想的地方： 模式文件被打开（在 <code>__init__()</code>中），并持续打开直到读取最后一个规则。 当Python退出或最后一个<code>LazyRules</code> 类的实例销毁，Python 会最终关闭文件，但是那仍然可能会是一个<em>很长</em>的时间。如果该类是一个“长时间运行”的Python进程的一部分，Python可能从不退出， <code>LazyRules</code> 对象就可能一直不会释放。
-</p><p>这种情况有解决办法。 不要在 <code>__init__()</code> 中打开文件并让其在一行一行读取规则时一直打开，你可以打开文件，读取所有规则，并立即关闭文件。或你可以打开文件，读取一条规则，用<a href="http://old.sebug.net/paper/books/dive-into-python3/files.html#read"><code>tell()</code> 方法</a>保存文件位置，关闭文件，后面再次打开它，使用<a href="http://old.sebug.net/paper/books/dive-into-python3/files.html#read"><code>seek()</code> 方法</a> 继续从你离开的地方读取。 或者你不需担心这些就让文件打开，如同本示例所做。 编程即是设计， 而设计牵扯到所有的权衡和限制。让一个文件一直打开太长时间可能是问题；让你代码太复杂也可能是问题。哪一个是更大的问题，依赖于你的开发团队，你的应用，和你的运行环境。
+</p><p>这种情况有解决办法。 不要在 <code>__init__()</code> 中打开文件并让其在一行一行读取规则时一直打开，你可以打开文件，读取所有规则，并立即关闭文件。或你可以打开文件，读取一条规则，用<code>tell()</code> 方法保存文件位置，关闭文件，后面再次打开它，使用<code>seek()</code> 方法 继续从你离开的地方读取。 或者你不需担心这些就让文件打开，如同本示例所做。 编程即是设计， 而设计牵扯到所有的权衡和限制。让一个文件一直打开太长时间可能是问题；让你代码太复杂也可能是问题。哪一个是更大的问题，依赖于你的开发团队，你的应用，和你的运行环境。
 </p></blockquote>
 
 <p class="a">⁂
