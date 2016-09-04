@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)http://old.sebug.net/paper/books/dive-into-python3/whats-new.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8">
+<title>Python基础教程：更新了什么？</title>
+<!--[if IE]><script src=http://mat3.02753.com/paper/dive-into-python3/j/html5.js></script><![endif]-->
+<link rel="stylesheet" href="./《深入 Python 3》中有何新内容_files/dip3.css">
+<style>
+body{counter-reset:h1 -1}
+h3:before{content:''}
+</style>
+<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="./《深入 Python 3》中有何新内容_files/mobile.css">
+<link rel="stylesheet" media="print" href="./《深入 Python 3》中有何新内容_files/print.css">
+<meta name="viewport" content="initial-scale=1.0">
+</head><body>
+
+<h1>Python基础教程：更新了什么？</h1>
+
+
+    <blockquote><span class="u"></span><span style="color: rgb(255, 0, 0); font-size: 14px;">本书由深入Python3改编而来，更新了其中过时的内容，为大陆地区做了本土化定制。<br/></span><span style="color: rgb(255, 0, 0); font-size: 14px;">本书遵循 </span><a style="text-decoration: underline; color: rgb(255, 0, 0); font-size: 14px;" rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><span style="color: rgb(255, 0, 0); font-size: 14px;">Creative Commons Attribution Share-Alike</span></a><span style="color: rgb(255, 0, 0); font-size: 14px;"> 协议自由授权。</span></blockquote>
+
+	
+<p id="toc">&nbsp;
+</p><h2 id="divingin"><i>又叫做</i> “the minus level”</h2>
+
+
+
+<p class="f">当下最新的Python版本是Python3，但是曾经的Python2太成功，以至于有很多公司和项目还在使用Python2。面对这样的现实，本书中会在很多地方讲解到Python2和Python3的区别，以便大家看到不同版本的代码不会不知所措。
+
+</p><p>Python2和Python3最大的区别就是字符串。吆。从哪儿开始呢。Python 2 有 “strings” 和 “Unicode strings”。Python 3 有 “bytes” 和 “strings”。也就是说，现在所有字符串都是 Unicode 的字符串，那么如果你想处理一个字节包，你可以使用新的 <code>bytes</code> 类型。Python 3 <em>从不会</em>在 strings 和 bytes 之间进行隐式的转换，因此在任何时候如果你不确信你拥有的是什么类型，你的代码几乎无疑的将会出问题。阅读Strings 的章节了解更多细节信息。 
+
+</p><p>贯穿整个这本书，Bytes 和 strings 的对比会一次又一次的出现。
+
+</p><ul>
+<li>在文件这章，你将了解到通过“二进制”模式和“文本”模式读取文件的区别；在文本模式下读取（和写入！）文件需要提供一个 <code>encoding</code> 参数。一些文本文件方法按照字符来计数，而另一些方法按照字节计数。如果你的代码采取一个字符等于一个字节的方式，那么在多字节表示一个字符的情况下<em>将会</em>出问题。
+</li><li>在<abbr>HTTP</abbr> Web 服务这章，<code>httplib2</code> 模块通过 <abbr>HTTP</abbr> 获取头信息和数据。<abbr>HTTP</abbr> 头信息返回的是字符串，而 <abbr>HTTP</abbr> 正文则返回的是字节。
+</li><li>在序列化 Python 对象这章，你将了解到为什么 Python 3 里面的 <code>pickle</code> 模块定义了一个和 Python 2 向后不兼容的新的数据类型。（提示：这就是因为字节和字符串的原因。） 同样 <abbr>JSON</abbr> 也根本不支持字节类型。我将向你展示如何解决这个问题。
+</li><li>在案例分析：移植 <code>chardet</code> 到 Python 3这章，到处都是一大堆一大堆关于字节和字符串的东西。
+</li></ul>
+
+<p>即使你不关心 Unicode （但实际上你会的），你也会想阅读一下Python 3 里面的字符串格式，这和 Python 2 里面的完全不一样。
+
+</p><p>迭代在 Python 3 里面无处不在，比起五年之前我写“深入Python” 的时候，我现在能更好的理解它们。你也需要理解他们，因为过去经常在 Python 2 里面返回列表的很多函数，在 Python 3 里面将返回迭代。至少，你应该阅读一下迭代章节的下半部分和高级迭代章节的下半部分。
+
+</p><p>根据大家的要求，我已经添加了一个关于特殊方法名称的附录，有点像 Python 文档的 “数据模型”章节但是包含更多的内容。
+
+</p><p>当我在撰写“深入 Python”的时候，所有可用的 XML 库都很糟糕。接着 Fredrik Lundh 编写了非常优秀的 ElementTree。Python 的专家们聪明的把 ElementTree 变成了标准库的一部分，然后现在它构成了我的新的 XML 章节的基础。解析 XML 的那些老的方式仍然可用，但是你应该避免使用它们，因为他们很糟糕！
+
+</p><p>除此之外，还有个关于 Python 的新东西&nbsp;—&nbsp;不是语言上的，而是社区中的&nbsp;—&nbsp;像Python 包装索引(PyPI)的出现。Python 提供了实用工具类用来将你的代码打包成标准格式，并分发那些包到 PyPI 中。阅读 打包 Python 库了解详细信息。
+
+</p>
+</body></html>
