@@ -19,7 +19,7 @@ del{background:#f87}
 <blockquote><span class="u"></span><span style="color: rgb(255, 0, 0); font-size: 14px;">本书由深入Python3改编而来，更新了其中过时的内容，为大陆地区做了本土化定制。<br/></span><span style="color: rgb(255, 0, 0); font-size: 14px;">本书遵循 </span><a style="text-decoration: underline; color: rgb(255, 0, 0); font-size: 14px;" rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><span style="color: rgb(255, 0, 0); font-size: 14px;">Creative Commons Attribution Share-Alike</span></a><span style="color: rgb(255, 0, 0); font-size: 14px;"> 协议自由授权。</span></blockquote>
 <p id="toc">&nbsp;
 </p><h2 id="divingin">概述</h2>
-<p class="f">未知的或者不正确的字符编码是因特网上无效数据(gibberish text)的头号起因。在<a href="http://old.sebug.net/paper/books/dive-into-python3/strings.html">第３章</a>，我们讨论过字符编码的历史，还有Unicode的产生，“一个能处理所有情况的大块头。”如果在网络上不再存在乱码这回事，我会爱上她的…因为所有的编辑系统(authoring system)保存有精确的编码信息，所有的传输协议都支持Unicode，所有处理文本的系统在执行编码间转换的时候都可以保持高度精确。
+<p class="f">未知的或者不正确的字符编码是因特网上无效数据(gibberish text)的头号起因。在第３章，我们讨论过字符编码的历史，还有Unicode的产生，“一个能处理所有情况的大块头。”如果在网络上不再存在乱码这回事，我会爱上她的…因为所有的编辑系统(authoring system)保存有精确的编码信息，所有的传输协议都支持Unicode，所有处理文本的系统在执行编码间转换的时候都可以保持高度精确。
 </p><p>我也会喜欢pony。
 </p><p>Unicode　pony。
 </p><p>Unipony也行。
@@ -739,7 +739,7 @@ tests\EUC-JP\arclamp.jp.xml                                  EUC-JP with confide
 <p>我们学到了什么？
 </p><ol>
 <li>尝试大批量地把代码从Python 2移植到Python 3上是一件让人头疼的工作。没有捷径。它确实很困难。
-</li><li><a href="http://old.sebug.net/paper/books/dive-into-python3/porting-code-to-python-3-with-2to3.html">自动化的<code>2to3</code>脚本</a>确实有用，但是它只能做一些简单的辅助工作&nbsp;—&nbsp;函数重命名，模块重命名，语法修改等。之前，它被认为是一项会让人印象深刻的大工程，但是最后，实际上它只是一个能智能地执行查找替换机器人。
+</li><li>自动化的<code>2to3</code>脚本确实有用，但是它只能做一些简单的辅助工作&nbsp;—&nbsp;函数重命名，模块重命名，语法修改等。之前，它被认为是一项会让人印象深刻的大工程，但是最后，实际上它只是一个能智能地执行查找替换机器人。
 </li><li>在移植<code>chardet</code>库的时候遇到的头号问题就是：字符串和字节对象之间的差异。在我们这个情况中，这种问题比较明显，因为整个<code>chardet</code>库就是一直在执行从字节流到字符串的转换。但是“字节流”出现的方式会远超出你的想象。以“二进制”模式读取文件？我们会获得字节流。获取一份web页面？调用web <abbr>API</abbr>？这也会返回字节流。
 </li><li><em>你</em>需要彻底地了解所面对的程序。如果那段程序是自己写自然非常好，但是至少，我们需要够理解所有晦涩难懂的细节。因为bug可能埋伏在任何地方。
 </li><li>测试样例是必要的。没有它们的话不要尝试着移植代码。我自信移植后的<code>chardet</code>模块能在Python 3中工作的<em>唯一</em>理由是，我一开始就使用了测试集合来检验所有主要的代码路径。如果你还没有任何测试集，在移植代码之前自己写一些吧。如果你的测试集合太小，那么请写全。如果测试集够了，那么，我们就又可以开始历险了。
