@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!-- saved from url=(0076)http://old.sebug.net/paper/books/dive-into-python3/special-method-names.html -->
+
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8">
-<title>附录B：特殊方法名称</title><!--[if IE]><script src=http://mat3.02753.com/paper/dive-into-python3/j/html5.js></script><![endif]-->
+<title>附录B：特殊方法名称</title>
 
 <link rel="stylesheet" href="./特殊方法名称 - 深入 Python 3_files/dip3.css">
 <style>
@@ -20,7 +20,7 @@ h3:before{counter-increment:h3;content:'B.' counter(h2) '.' counter(h3) '. '}
 </p><h2 id="divingin">深入</h2>
 <p class="f">在本书其它几处，我们已经见识过一些特殊方法——即在使用某些语法时 Python 所调用的“神奇”方法。使用特殊方法，类用起来如同序列、字典、函数、迭代器，或甚至像个数字！本附录为我们已经见过特殊方法提供了参考，并对一些更加深奥的特殊方法进行了简要介绍。</p><h2 id="basics">基础知识</h2>
 
-<p>如果曾阅读 <a href="http://old.sebug.net/paper/books/dive-into-python3/iterators.html#divingin">《类的简介》</a>一章，你可能已经见识过了最常见的特殊方法： <code>__init__()</code> 方法。盖章结束时，我写的类多数需要进行一些初始化工作。还有一些其它的基础特殊方法对调试自定义类也特别有用。</p><table>
+<p>如果曾阅读 《类的简介》一章，你可能已经见识过了最常见的特殊方法： <code>__init__()</code> 方法。盖章结束时，我写的类多数需要进行一些初始化工作。还有一些其它的基础特殊方法对调试自定义类也特别有用。</p><table>
 <tbody><tr><th>序号</th><th>目的</th><th>所编写代码</th><th>Python 实际调用</th></tr><tr><th>①
 </th><td>初始化一个实例</td><td><code class="pp">x = MyClass()</code>
 </td><td><a href="http://docs.python.org/3.1/reference/datamodel.html#object.__init__"><code>x.<dfn>__init__</dfn>()</code></a>
@@ -56,7 +56,7 @@ h3:before{counter-increment:h3;content:'B.' counter(h2) '.' counter(h3) '. '}
 <ol>
 <li>无论何时创建迭代器都将调用 <code>__iter__()</code> 方法。这是用初始值对迭代器进行初始化的绝佳之处。</li><li>无论何时从迭代器中获取下一个值都将调用 <code>__next__()</code> 方法。</li><li><code>__reversed__()</code> 方法并不常用。它以一个现有序列为参数，并将该序列中所有元素从尾到头以逆序排列生成一个新的迭代器。</li></ol>
 
-<p>正如我们在 <a href="http://old.sebug.net/paper/books/dive-into-python3/iterators.html#a-fibonacci-iterator">《迭代器》一章</a>中看到的，<code>for</code> 循环也可用作迭代器。在下面的循环中：</p><pre class="nd pp"><code>for x in seq:
+<p>正如我们在《迭代器》一章中看到的，<code>for</code> 循环也可用作迭代器。在下面的循环中：</p><pre class="nd pp"><code>for x in seq:
     print(x)</code></pre>
 
 <p>Python 3 将会调用 <code>seq.__iter__()</code> 以创建一个迭代器，然后对迭代器调用 <code>__next__()</code> 方法以获取 <var>x</var> 的每个值。当 <code>__next__()</code> 方法引发 <code>StopIteration</code> 例外时， <code>for</code> 循环正常结束。</p><h2 id="computed-attributes">计算属性</h2>
@@ -581,8 +581,6 @@ def __exit__(self, *args):
 </li></ul>
 
 <p class="v"><a href="http://old.sebug.net/paper/books/dive-into-python3/porting-code-to-python-3-with-2to3.html" rel="prev" title="back to “Porting code to Python 3 with 2to3”"><span class="u">☜</span></a> <a rel="next" href="http://old.sebug.net/paper/books/dive-into-python3/where-to-go-from-here.html" title="onward to “Where To Go From Here”"><span class="u">☞</span></a>
-</p><p class="c">© 2001–9 <a href="http://old.sebug.net/paper/books/dive-into-python3/about.html">Mark Pilgrim</a>
-<script src="./特殊方法名称 - 深入 Python 3_files/jquery.js"></script>
-<script src="./特殊方法名称 - 深入 Python 3_files/prettify.js"></script>
-<script src="./特殊方法名称 - 深入 Python 3_files/dip3.js"></script>
+</p><p class="c">
+
 </p></body></html>

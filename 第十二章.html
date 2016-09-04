@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!-- saved from url=(0059)http://old.sebug.net/paper/books/dive-into-python3/xml.html -->
+
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8">
 <title>Python基础教程：XML</title>
-<!--[if IE]><script src=http://mat3.02753.com/paper/dive-into-python3/j/html5.js></script><![endif]-->
+
 <link rel="stylesheet" href="./XML - 深入Python 3_files/dip3.css">
 <style>
 body{counter-reset:h1 12}
@@ -165,7 +165,7 @@ mark{display:inline}
 
 <p>对于<abbr>XML</abbr>解析器而言，以上两个<abbr>XML</abbr>文档是<em>一样的</em>。名字空间 + 元素名 = <abbr>XML</abbr>标识。前缀只是用来引用名字空间的，所以对于解析器来说，这些前缀名(<code>atom:</code>)其实无关紧要的。名字空间相同，元素名相同，属性（或者没有属性）相同，每个元素的文本内容相同，则<abbr>XML</abbr>文档相同。
 
-</p><p>最后，在根元素之前，<a href="http://old.sebug.net/paper/books/dive-into-python3/strings.html#one-ring-to-rule-them-all">字符编码信息</a>可以出现在<abbr>XML</abbr>文档的第一行。（这里存在一个两难的局面(catch-22)，直观上来说，解析<abbr>XML</abbr>文档需要这些编码信息，而这些信息又存在于<abbr>XML</abbr>文档中，如果你对<abbr>XML</abbr>如何解决此问题有兴趣，请参阅<a href="http://www.w3.org/TR/REC-xml/#sec-guessing-no-ext-info"><abbr>XML</abbr>规范中 F 章节</a>）
+</p><p>最后，在根元素之前，字符编码信息可以出现在<abbr>XML</abbr>文档的第一行。（这里存在一个两难的局面(catch-22)，直观上来说，解析<abbr>XML</abbr>文档需要这些编码信息，而这些信息又存在于<abbr>XML</abbr>文档中，如果你对<abbr>XML</abbr>如何解决此问题有兴趣，请参阅<a href="http://www.w3.org/TR/REC-xml/#sec-guessing-no-ext-info"><abbr>XML</abbr>规范中 F 章节</a>）
 
 </p><pre class="nd pp"><code>&lt;?xml version='1.0' <mark>encoding='utf-8'</mark>?&gt;</code></pre>
 
@@ -258,7 +258,7 @@ mark{display:inline}
 <samp>&lt;Element {http://www.w3.org/2005/Atom}feed at cd1eb0&gt;</samp></pre>
 <ol>
 <li>ElementTree属于Python标准库的一部分，它的位置为<code>xml.etree.ElementTree</code>。
-</li><li><code>parse()</code>函数是ElementTree库的主要入口，它使用文件名或者<a href="http://old.sebug.net/paper/books/dive-into-python3/files.html#file-like-objects">流对象</a>作为参数。<code>parse()</code>函数会立即解析完整个文档。如果内存资源紧张，也可以<a href="http://effbot.org/zone/element-iterparse.htm">增量式地解析<abbr>XML</abbr>文档</a>
+</li><li><code>parse()</code>函数是ElementTree库的主要入口，它使用文件名或者流对象作为参数。<code>parse()</code>函数会立即解析完整个文档。如果内存资源紧张，也可以<a href="http://effbot.org/zone/element-iterparse.htm">增量式地解析<abbr>XML</abbr>文档</a>
 </li><li><code>parse()</code>函数会返回一个能代表整篇文档的对象。这<em>不是</em>根元素。要获得根元素的引用可以调用<code>getroot()</code>方法。
 </li><li>如预期的那样，根元素即<code>http://www.w3.org/2005/Atom</code>名字空间中的<code>feed</code>。该字符串表示再次重申了非常重要的一点：<abbr>XML</abbr>元素由名字空间和标签名（也称作<i>本地名(local name)</i>）组成。这篇文档中的每个元素都在名字空间Atom中，所以根元素被表示为<code>{http://www.w3.org/2005/Atom}feed</code>。
 </li></ol>
@@ -656,8 +656,6 @@ lxml.etree.XMLSyntaxError: Entity 'hellip' not defined, line 3, column 28</samp>
 </li></ul>
 
 <p class="v"><a rel="prev" href="http://old.sebug.net/paper/books/dive-into-python3/files.html" title="back to “Files”"><span class="u">☜</span></a> <a rel="next" href="http://old.sebug.net/paper/books/dive-into-python3/serializing.html" title="onward to “Serializing Python Objects”"><span class="u">☞</span></a>
-</p><p class="c">© 2001–9 <a href="http://old.sebug.net/paper/books/dive-into-python3/about.html">Mark Pilgrim</a>
-<script src="./XML - 深入Python 3_files/jquery.js"></script>
-<script src="./XML - 深入Python 3_files/prettify.js"></script>
-<script src="./XML - 深入Python 3_files/dip3.js"></script>
+</p><p >原作者：Mark Pilgrim  维护：李旭
+
 </p></body></html>

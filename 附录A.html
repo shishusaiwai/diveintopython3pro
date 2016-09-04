@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!-- saved from url=(0090)http://old.sebug.net/paper/books/dive-into-python3/porting-code-to-python-3-with-2to3.html -->
+
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8">
 <title>附录A：使用2to3将代码移植到Python 3</title>
-<!--[if IE]><script src=http://mat3.02753.com/paper/dive-into-python3/j/html5.js></script><![endif]-->
+
 <link rel="stylesheet" href="./使用2to3将代码移植到Python 3 - 深入Python 3_files/dip3.css">
 <style>
 h1:before{counter-increment:h1;content:'Appendix A. '}
@@ -20,11 +20,11 @@ h3:before{counter-increment:h3;content:'A.' counter(h2) '.' counter(h3) '. '}
 
 </p><h2 id="divingin">概述</h2>
 
-<p class="f">几乎所有的Python 2程序都需要一些修改才能正常地运行在Python 3的环境下。为了简化这个转换过程，Python 3自带了一个叫做<code>2to3</code>的实用脚本(Utility Script)，这个脚本会将你的Python 2程序源文件作为输入，然后自动将其转换到Python 3的形式。<a href="http://old.sebug.net/paper/books/dive-into-python3/case-study-porting-chardet-to-python-3.html#running2to3">案例研究:将<code>chardet</code>移植到Python 3(porting chardet to Python 3)</a>描述了如何运行这个脚本，然后展示了一些它不能自动修复的情况。这篇附录描述了它<em>能够</em>自动修复的内容。
+<p class="f">几乎所有的Python 2程序都需要一些修改才能正常地运行在Python 3的环境下。为了简化这个转换过程，Python 3自带了一个叫做<code>2to3</code>的实用脚本(Utility Script)，这个脚本会将你的Python 2程序源文件作为输入，然后自动将其转换到Python 3的形式。案例研究:将<code>chardet</code>移植到Python 3(porting chardet to Python 3)描述了如何运行这个脚本，然后展示了一些它不能自动修复的情况。这篇附录描述了它<em>能够</em>自动修复的内容。
 
 </p><h2 id="print"><code>print</code>语句</h2>
 
-<p>在Python 2里，<code>print</code>是一个语句。无论你想输出什么，只要将它们放在<a href="http://old.sebug.net/paper/books/dive-into-python3/your-first-python-program.html#divingin"><code>print</code></a>关键字后边就可以。在Python 3里，<code>print()</code>是一个函数。就像其他的函数一样，<code>print()</code>需要你将想要输出的东西作为参数传给它。
+<p>在Python 2里，<code>print</code>是一个语句。无论你想输出什么，只要将它们放在<code>print</code>关键字后边就可以。在Python 3里，<code>print()</code>是一个函数。就像其他的函数一样，<code>print()</code>需要你将想要输出的东西作为参数传给它。
 
 </p><table>
 <tbody><tr><th>Notes
@@ -1340,9 +1340,6 @@ do_stuff(a_list)</code></pre>
 </td></tr></tbody></table>
 
 <p class="v"><a href="http://old.sebug.net/paper/books/dive-into-python3/packaging.html" rel="prev" title="back to “Packaging Python Libraries”"><span class="u">☜</span></a> <a href="http://old.sebug.net/paper/books/dive-into-python3/special-method-names.html" rel="next" title="onward to “Special Method Names”"><span class="u">☞</span></a>
-</p><p class="c">© 2001–9 <a href="http://old.sebug.net/paper/books/dive-into-python3/about.html">Mark Pilgrim</a>
-<script src="./使用2to3将代码移植到Python 3 - 深入Python 3_files/jquery.js"></script>
-<script src="./使用2to3将代码移植到Python 3 - 深入Python 3_files/prettify.js"></script>
-<script src="./使用2to3将代码移植到Python 3 - 深入Python 3_files/dip3.js"></script>
-<script type="text/javascript" src="./使用2to3将代码移植到Python 3 - 深入Python 3_files/check_analytics.js"></script>
+</p><p >
+
 </p></code></code></body></html>

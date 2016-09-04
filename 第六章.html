@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<!-- saved from url=(0066)http://old.sebug.net/paper/books/dive-into-python3/generators.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8">
-<title>Python基础教程：闭合与生成器</title><!--[if IE]><script src=http://mat3.02753.com/paper/dive-into-python3/j/html5.js></script><![endif]-->
 
-<link rel="stylesheet" href="./闭合与生成器 －－ 深入 Python 3_files/dip3.css">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8">
+<title>Python基础教程：闭合与生成器</title>
+
+
 <style>
 body{counter-reset:h1 6}
 </style>
-<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="./闭合与生成器 －－ 深入 Python 3_files/mobile.css">
-<link rel="stylesheet" media="print" href="./闭合与生成器 －－ 深入 Python 3_files/print.css">
+
 <meta name="viewport" content="initial-scale=1.0">
 </head><body>
 
@@ -35,7 +34,7 @@ def plural(noun):
     else:
         return noun + 's'</code></pre>
 <ol>
-<li>这是一条正则表达式，但它使用了在 <a href="http://old.sebug.net/paper/books/dive-into-python3/regular-expressions.html"><i>《正则表达式》</i></a> 一章中没有讲过的语法。中括号表示“匹配这些字符的其中之一”。因此 <code>[sxz]</code> 的意思是： “<code>s</code>、 <code>x</code> 或 <code>z</code>”，但只匹配其中之一。对 <code>$</code> 应该很熟悉了，它匹配字符串的结尾。经过组合，该正则表达式将测试 <var>noun</var> 是否以 <code>s</code>、 <code>x</code> 或 <code>z</code> 结尾。</li><li>该 <code>re.sub()</code> 函数执行基于正则表达式的字符串替换。</li></ol>
+<li>这是一条正则表达式，但它使用了在 <i>《正则表达式》</i>一章中没有讲过的语法。中括号表示“匹配这些字符的其中之一”。因此 <code>[sxz]</code> 的意思是： “<code>s</code>、 <code>x</code> 或 <code>z</code>”，但只匹配其中之一。对 <code>$</code> 应该很熟悉了，它匹配字符串的结尾。经过组合，该正则表达式将测试 <var>noun</var> 是否以 <code>s</code>、 <code>x</code> 或 <code>z</code> 结尾。</li><li>该 <code>re.sub()</code> 函数执行基于正则表达式的字符串替换。</li></ol>
 
 <p>让我们看看正则表达式替换的细节。</p><pre class="screen"><samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">import re</kbd>
 <a><samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">re.search('[abc]', 'Mark')</kbd>    <span class="u">①</span></a>
@@ -125,7 +124,7 @@ def plural(noun):
 <li>现在，每条匹配规则都有自己的函数，它们返回对 <code>re.search()</code> 函数调用结果。</li><li>每条应用规则也都有自己的函数，它们调用 <code>re.sub()</code> 函数以应用恰当的复数变化规则。</li><li>现在有了一个 <code>rules</code> 数据结构——一个函数对的序列，而不是一个函数（<code>plural()</code>）实现多个条规则。</li><li>由于所有的规则被分割成单独的数据结构，新的 <code>plural()</code> 函数可以减少到几行代码。使用 <code>for</code> 循环，可以一次性从 <var>rules</var> 这个数据结构中取出匹配规则和应用规则这两样东西（一条匹配对应一条应用）。在 <code>for</code> 循环的第一次迭代过程中， <var>matches_rule</var> 将获取 <code>match_sxz</code>，而 <var>apply_rule</var> 将获取 <code>apply_sxz</code>。在第二次迭代中（假定可以进行到这一步）， <var>matches_rule</var> 将会赋值为 <code>match_h</code>，而 <var>apply_rule</var> 将会赋值为 <code>apply_h</code> 。该函数确保最终能够返回某个值，因为终极匹配规则 (<code>match_default</code>) 只返回 <code>True</code>，意思是对应的应用规则 (<code>apply_default</code>) 将总是被应用。</li></ol>
 
 <aside>变量 “rules” 是一系列函数对。</aside>
-<p>该技术能够成功运作的原因是 <a href="http://old.sebug.net/paper/books/dive-into-python3/your-first-python-program.html#everythingisanobject">Python 中一切都是对象</a>，包括了函数。数据结构 <var>rules</var> 包含了函数——不是函数的名称，而是实际的函数对象。在 <code>for</code> 循环中被赋值后，<var>matches_rule</var> 和 <var>apply_rule</var> 是可实际调用的函数。在第一次 <code>for</code> 循环的迭代过程中，这相当于调用 <code>matches_sxz(noun)</code>，如果返回一个匹配值，将调用 <code>apply_sxz(noun)</code> 。</p><p>如果这种附加抽象层令你迷惑，可以试着展开函数以了解其等价形式。整个 <code>for</code> 循环等价于下列代码：</p><pre class="nd pp"><code>
+<p>该技术能够成功运作的原因是Python 中一切都是对象，包括了函数。数据结构 <var>rules</var> 包含了函数——不是函数的名称，而是实际的函数对象。在 <code>for</code> 循环中被赋值后，<var>matches_rule</var> 和 <var>apply_rule</var> 是可实际调用的函数。在第一次 <code>for</code> 循环的迭代过程中，这相当于调用 <code>matches_sxz(noun)</code>，如果返回一个匹配值，将调用 <code>apply_sxz(noun)</code> 。</p><p>如果这种附加抽象层令你迷惑，可以试着展开函数以了解其等价形式。整个 <code>for</code> 循环等价于下列代码：</p><pre class="nd pp"><code>
 def plural(noun):
     if match_sxz(noun):
         return apply_sxz(noun)
@@ -293,8 +292,6 @@ def plural(noun, rules_filename='plural5-rules.txt'):
 
 <p class="v"><a href="http://old.sebug.net/paper/books/dive-into-python3/regular-expressions.html" rel="prev" title="back to “Regular Expressions”"><span class="u">☜</span></a> <a href="http://old.sebug.net/paper/books/dive-into-python3/iterators.html" rel="next" title="onward to “Classes &amp; Iterators”"><span class="u">☞</span></a>
 
-</p><p class="c">© 2001–9 <a href="http://old.sebug.net/paper/books/dive-into-python3/about.html">Mark Pilgrim</a>
-<script src="./闭合与生成器 －－ 深入 Python 3_files/jquery.js"></script>
-<script src="./闭合与生成器 －－ 深入 Python 3_files/prettify.js"></script>
-<script src="./闭合与生成器 －－ 深入 Python 3_files/dip3.js"></script>
+</p><p>原作者：Mark Pilgrim  维护：李旭
+
 </p></body></html>

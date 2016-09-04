@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<!-- saved from url=(0065)http://old.sebug.net/paper/books/dive-into-python3/packaging.html -->
+
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8">
-<title>Python基础教程：Python 类库打包</title><!--[if IE]><script src=http://mat3.02753.com/paper/dive-into-python3/j/html5.js></script><![endif]-->
+<title>Python基础教程：Python 类库打包</title>
 
 <link rel="stylesheet" href="./打包 Python 类库 - Dive Into Python 3_files/dip3.css">
 <style>
 body{counter-reset:h1 16}
 mark{display:inline}
 </style>
-<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="./打包 Python 类库 - Dive Into Python 3_files/mobile.css">
-<link rel="stylesheet" media="print" href="./打包 Python 类库 - Dive Into Python 3_files/print.css">
+
 <meta name="viewport" content="initial-scale=1.0">
 </head><body>
 
@@ -90,9 +89,9 @@ This version requires Python 3 or later; a Python 2 version is available separat
    |
    +--iri2uri.py</pre>
 <ol>
-<li>创建根目录来保存所有的目录和文件。将其以 Python 模块的名字命名。</li><li>为了适应 Windows 用户，"自述"文件应包含 <code>.txt</code> 扩展名，而且它应该使用 Windows 风格回车符。不能仅仅因为<em>你</em>使用了一个优秀的文本编辑器，它从命令行运行并包括它自己的宏语言，而需要让你的用户为难。（你的用户使用记事本。虽然可悲，但却是事实。）即使你工作在 Linux 或 Mac OS X 环境下，优秀的文本编辑器毫无疑问地会有一个选项，允许将文件以 Windows 风格回车符来保存。</li><li>Distutils 安装脚本应命名为 setup.py，除非你有一个很好的理由不这样做。但你并没有一个很好的理由不这样做。</li><li>如果你的Python软件只包含一个单一的 <code>.py</code> 文件，你应该把它和"自述"文件以及安装脚本放到根目录下。但 <code>httplib2</code> 并不是单一的 <code>.py</code> 文件，它是一个<a href="http://old.sebug.net/paper/books/dive-into-python3/case-study-porting-chardet-to-python-3.html#multifile-modules">多文件模块</a> 。但是没关系！只需在根目录下放置 <code>httplib2</code> 目录，这样在 <code>httplib2/</code> 根目录下就会有一个包含 <code>__init__.py</code> 文件的 <code>httplib2/</code> 目录。这并不是一个难题，事实上，它可以简化打包过程。</li></ol>
+<li>创建根目录来保存所有的目录和文件。将其以 Python 模块的名字命名。</li><li>为了适应 Windows 用户，"自述"文件应包含 <code>.txt</code> 扩展名，而且它应该使用 Windows 风格回车符。不能仅仅因为<em>你</em>使用了一个优秀的文本编辑器，它从命令行运行并包括它自己的宏语言，而需要让你的用户为难。（你的用户使用记事本。虽然可悲，但却是事实。）即使你工作在 Linux 或 Mac OS X 环境下，优秀的文本编辑器毫无疑问地会有一个选项，允许将文件以 Windows 风格回车符来保存。</li><li>Distutils 安装脚本应命名为 setup.py，除非你有一个很好的理由不这样做。但你并没有一个很好的理由不这样做。</li><li>如果你的Python软件只包含一个单一的 <code>.py</code> 文件，你应该把它和"自述"文件以及安装脚本放到根目录下。但 <code>httplib2</code> 并不是单一的 <code>.py</code> 文件，它是一个多文件模块 。但是没关系！只需在根目录下放置 <code>httplib2</code> 目录，这样在 <code>httplib2/</code> 根目录下就会有一个包含 <code>__init__.py</code> 文件的 <code>httplib2/</code> 目录。这并不是一个难题，事实上，它可以简化打包过程。</li></ol>
 
-<p><code>chardet</code> 目录看起来有些不同。像 <code>httplib2</code> 一样，它是一个<a href="http://old.sebug.net/paper/books/dive-into-python3/case-study-porting-chardet-to-python-3.html#multifile-modules">多文件模块</a> ，所以在 <code>chardet/</code> 根目录下有一个 <code>chardet/</code> 目录。除了 <code>README.txt</code> 文件，在 <code>docs/</code> 目录下， <code>chardet</code> 还有 <abbr>HTML</abbr> ——格式化文档。该 <code>docs/</code> 目录包含多个 <code>.html</code> 和<code>.css</code> 文件和 <code>images/</code> 子目录，其中包含几个 <code>.png</code> 和 <code>.gif</code> 文件。（稍后你会发现，这将是很重要的。）此外，对于 <abbr>(L)GPL</abbr> 许可的软件，它包含一个单独的 <code>COPYING.txt</code> 文件，其中包含 <abbr>LGPL</abbr> 许可证的完整内容。</p><pre class="nd"><code>
+<p><code>chardet</code> 目录看起来有些不同。像 <code>httplib2</code> 一样，它是一个多文件模块 ，所以在 <code>chardet/</code> 根目录下有一个 <code>chardet/</code> 目录。除了 <code>README.txt</code> 文件，在 <code>docs/</code> 目录下， <code>chardet</code> 还有 <abbr>HTML</abbr> ——格式化文档。该 <code>docs/</code> 目录包含多个 <code>.html</code> 和<code>.css</code> 文件和 <code>images/</code> 子目录，其中包含几个 <code>.png</code> 和 <code>.gif</code> 文件。（稍后你会发现，这将是很重要的。）此外，对于 <abbr>(L)GPL</abbr> 许可的软件，它包含一个单独的 <code>COPYING.txt</code> 文件，其中包含 <abbr>LGPL</abbr> 许可证的完整内容。</p><pre class="nd"><code>
 chardet/
 |
 +--COPYING.txt
@@ -194,7 +193,7 @@ Topic :: Software Development :: Libraries :: Python Modules</code></pre>
 </li><li><code>setup.py</code>
 </li><li>由列在 <code>packages</code> 参数中的多模块文件所需的 <code>.py</code> 文件</li><li>在 <code>py_modules</code> 参数中列出的单独 <code>.py</code> 文件</li></ul>
 
-<p>这将覆盖<a href="http://old.sebug.net/paper/books/dive-into-python3/packaging.html#structure"><code>httplib2</code> 项目的所有文件</a>。但对于 <code>chardet</code> 项目，我们还希望包含 <code>COPYING.txt</code> 许可文件和含有图像与 <abbr>HTML</abbr> 文件的整个 <code>docs/</code> 目录。要让 Distutils 在构建 <code>chardet</code> 发布包时包含这些额外的文件和目录，你需要创建一个 <i>manifest file</i> 。</p><p>清单文件是一个名为 <code>MANIFEST.in</code> 的文本文件。将它放置在项目的根目录下，同 <code>README.txt</code> 和 <code>setup.py</code> 一起。清单文件并<em>不是</em> Python 脚本，它是文本文件，其中包含一系列 Distutils 定义格式的命令。清单命令允许你包含或排除特定的文件和目录。</p><p>以下是 <code>chardet</code> 项目的全部清单文件：</p><pre class="nd"><code><a>include COPYING.txt                                <span class="u">①</span></a>
+<p>这将覆盖<code>httplib2</code> 项目的所有文件。但对于 <code>chardet</code> 项目，我们还希望包含 <code>COPYING.txt</code> 许可文件和含有图像与 <abbr>HTML</abbr> 文件的整个 <code>docs/</code> 目录。要让 Distutils 在构建 <code>chardet</code> 发布包时包含这些额外的文件和目录，你需要创建一个 <i>manifest file</i> 。</p><p>清单文件是一个名为 <code>MANIFEST.in</code> 的文本文件。将它放置在项目的根目录下，同 <code>README.txt</code> 和 <code>setup.py</code> 一起。清单文件并<em>不是</em> Python 脚本，它是文本文件，其中包含一系列 Distutils 定义格式的命令。清单命令允许你包含或排除特定的文件和目录。</p><p>以下是 <code>chardet</code> 项目的全部清单文件：</p><pre class="nd"><code><a>include COPYING.txt                                <span class="u">①</span></a>
 <a>recursive-include docs *.html *.css *.png *.gif    <span class="u">②</span></a></code></pre>
 <ol>
 <li>第一行是不言自明的：包含项目根目录的 <code>COPYING.txt</code> 文件。</li><li>第二行有些复杂。<code>recursive-include</code> 命令需要一个目录名和至少一个文件名。文件名并不限于特定的文件，可以包含通配符。这行的意思是“看到在项目根目录下的 <code>docs/</code> 目录了吗？在该目录下（递归地）查找 <code>.html</code>、 <code>.css</code>、 <code>.png</code> 和 <code>.gif</code> 文件。我希望将他们都包含在我的发布包中。”</li></ol>
@@ -421,8 +420,6 @@ I can store your PyPI login so future submissions will be faster.
 </li></ul>
 
 <p class="v"><a rel="prev" href="http://old.sebug.net/paper/books/dive-into-python3/case-study-porting-chardet-to-python-3.html" title="back to “Case Study: Porting chardet to Python 3”"><span class="u">☜</span></a> <a rel="next" href="http://old.sebug.net/paper/books/dive-into-python3/porting-code-to-python-3-with-2to3.html" title="onward to “Porting Code to Python 3 with 2to3”"><span class="u">☞</span></a>
-</p><p class="c">© 2001–9 <a href="http://old.sebug.net/paper/books/dive-into-python3/about.html">Mark Pilgrim</a>
-<script src="./打包 Python 类库 - Dive Into Python 3_files/jquery.js"></script>
-<script src="./打包 Python 类库 - Dive Into Python 3_files/prettify.js"></script>
-<script src="./打包 Python 类库 - Dive Into Python 3_files/dip3.js"></script>
+</p><p> 原作者：Mark Pilgrim 维护：李旭</a>
+
 </p></body></html>
