@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)http://old.sebug.net/paper/books/dive-into-python3/installing-python.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8">
+<title>Python基础教程：安装Python</title><!--[if IE]><script src=http://mat3.02753.com/paper/dive-into-python3/j/html5.js></script><![endif]-->
+
+<link rel="stylesheet" href="./安装 Python －－ 深入 Python 3_files/dip3.css">
+<style>
+body{counter-reset:h1 0}
+.i{list-style:none;margin:0;padding:0}
+#which{padding-top:1.75em}
+h2,.i>li{clear:both}
+</style>
+<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="./安装 Python －－ 深入 Python 3_files/mobile.css">
+<link rel="stylesheet" media="print" href="./安装 Python －－ 深入 Python 3_files/print.css">
+<meta name="viewport" content="initial-scale=1.0">
+</head><body>
+
+
+<h1>Python基础教程：安装Python</h1>
+
+<blockquote><span class="u"></span><span style="color: rgb(255, 0, 0); font-size: 14px;">本书由深入Python3改编而来，更新了其中过时的内容，为大陆地区做了本土化定制。<br/></span><span style="color: rgb(255, 0, 0); font-size: 14px;">本书遵循 </span><a style="text-decoration: underline; color: rgb(255, 0, 0); font-size: 14px;" rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><span style="color: rgb(255, 0, 0); font-size: 14px;">Creative Commons Attribution Share-Alike</span></a><span style="color: rgb(255, 0, 0); font-size: 14px;"> 协议自由授权。</span></blockquote>
+
+
+
+
+<p id="level" style="margin-top: 1em;"><span style="font-size: 20px;"><strong>安装 Python</strong></span></p><p style="margin-top: 1em;">对 Python 要做的第一件事情是安装。还是说已经装了？</p><p style="margin-top: 1em;">如果使用的是托管服务器上的帐号，<abbr>ISP［互联网供应商］</abbr>可能已经安装了 Python 3 。如果是在家运行的 Linux ，也可能已经安装了 Python 3 。多数流行的 GNU/Linux 发行包在缺省安装中都包括了 Python 2 ；为数不多但却不断增加的发行包中同时也包括了 Python 3 。Mac OS X 包括了命令行版本的 Python 2，但直至本书写作之时止，其尚未提供 Python 3。Microsoft Windows 未安装任何版本之 Python 。但是不要绝望！无论是何种操作系统，均可通过安装 Python 来开启通向光明的道路。</p><p style="margin-top: 1em;">在 Linux 或 Mac OS X 系统上检测 Python 3 的最简单办法是进入命令行。命令行是一个黑乎乎的窗口，类似于这样<img alt="terminal01.png" src="http://shishusaiwaitest.qiniudn.com/1/d7e2bed72e2740edb867853b97c65eb7.png" title=""/></p><p style="margin-top: 1em;">Linux下一般可以通过像上图左侧一样的启动栏启动，或者快捷键Ctrl + Alt + T。Mac下面则通过LaunchPad进行启动</p><p style="margin-top: 1em;"><img alt="terminal02.jpg" src="http://shishusaiwaitest.qiniudn.com/1/c805a92d7f694852a437ec38b081e40b.jpg" title=""/></p><p style="margin-top: 1em;">点击上图中1处，调出LaunchPad，然后在2处输入terminal，回车，就可以看到Terminal的图标了，再点击一下该图标，打开命令行</p><p style="margin-top: 1em;"><img alt="terminal03.jpg" src="http://shishusaiwaitest.qiniudn.com/1/edd592317f084d4ebcf51c201ca1c8a5.jpg" title=""/></p><p style="margin-top: 1em;">见到命令行提示符之后，只需输入<kbd>python3</kbd>（全部字母小写、无空格），并观察接下来发生的事情。我家中的 Linux 系统已经安装了 Python 3 ，运行该命令将把我带入<em>Python<dfn>交互式 shell</dfn></em> 中。</p><blockquote style="margin-top: 1em; font-size: 10px;"><pre class="nd screen">mark@atlantis:~$&nbsp;python3
+Python&nbsp;3.0.1+&nbsp;(r301:69556,&nbsp;Apr&nbsp;15&nbsp;2009,&nbsp;17:25:52)
+[GCC&nbsp;4.3.3]&nbsp;on&nbsp;linux2
+Type&nbsp;&quot;help&quot;,&nbsp;&quot;copyright&quot;,&nbsp;&quot;credits&quot;&nbsp;or&nbsp;&quot;license&quot;&nbsp;for&nbsp;more&nbsp;information.
+&gt;&gt;&gt;</pre></blockquote><p style="margin-top: 1em;">（输入<kbd>exit()</kbd>并按下<kbd>回车键</kbd>可退出 Python 交互式 shell，这里作者的版本比较旧，你的版本一定更高）</p><p style="margin-top: 1em;">我选择的 虚拟主机服务商 也运行 Linux 并提供命令行访问，但我的服务器未安装 Python 3 。（嘘！）</p><blockquote style="margin-top: 1em; font-size: 10px;"><pre class="nd screen">mark@manganese:~$&nbsp;python3bash:&nbsp;python3:&nbsp;command&nbsp;not&nbsp;found</pre></blockquote><p style="margin-top: 1em;">现在你已经能够确定你的机器上是否安装有Python3了。如果你已经安装了，你可以放心地跳过本章后面的部分了，开始下一章的旅程吧。如果还没有安装，那么请根据你自己的操作系统，选读下面的安装文档，你可以忽略每篇文章最后安装Git的部分．</p><ul class=" list-paddingleft-2"><li><p><a target="_blank" href="http://python.freelycode.com/contribution/detail/285">Windows 下 Python, Pip 和 Git 的安装</a></p></li><li><p><a target="_blank" href="http://python.freelycode.com/contribution/detail/286">Mac 下 Python, Pip 和 Git 的安装</a></p></li><li><p><a target="_blank" href="http://python.freelycode.com/contribution/detail/283">Ubuntu/Debian 下 Python, Pip 和 Git 的安装</a></p></li><li><p><a target="_blank" href="http://python.freelycode.com/contribution/detail/284">Redhat/Centos/Fedora 下 Python, Pip 和 Git 的安装</a></p></li></ul>
+    
+  </div>
+  <div class="col-sm-2">
+    
+      &nbsp;
+    
+    
+  </div>
+</div>
+
+  <hr />
+</div>
