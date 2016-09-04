@@ -72,7 +72,7 @@ FAILED (failures=1)</samp></pre>
             index += len(numeral)
     return result</code></pre>
 <ol>
-<li>只需两行代码：一行明确地对空字符串进行检查，另一行为 <code>raise</code> 语句。</li><li>在本书中还尚未提到该内容，因此现在让我们讲讲 <a href="http://old.sebug.net/paper/books/dive-into-python3/strings.html#formatting-strings">字符串格式化</a> 最后一点内容。从 Python 3.1 起，在格式化标示符中使用位置索引时可以忽略数字。也就是说，无需使用格式化标示符 <code>{0}</code> 来指向 <code>format()</code> 方法的第一个参数，只需简单地使用 <code>{}</code> 而 Python 将会填入正确的位置索引。该规则适用于任何数量的参数；第一个 <code>{}</code> 代表 <code>{0}</code>，第二个 <code>{}</code> 代表 <code>{1}</code>，以此类推。</li></ol>
+<li>只需两行代码：一行明确地对空字符串进行检查，另一行为 <code>raise</code> 语句。</li><li>在本书中还尚未提到该内容，因此现在让我们讲讲字符串格式化 最后一点内容。从 Python 3.1 起，在格式化标示符中使用位置索引时可以忽略数字。也就是说，无需使用格式化标示符 <code>{0}</code> 来指向 <code>format()</code> 方法的第一个参数，只需简单地使用 <code>{}</code> 而 Python 将会填入正确的位置索引。该规则适用于任何数量的参数；第一个 <code>{}</code> 代表 <code>{0}</code>，第二个 <code>{}</code> 代表 <code>{1}</code>，以此类推。</li></ol>
 
 <pre class="screen"><samp class="p">you@localhost:~/diveintopython3/examples$ </samp><kbd>python3 romantest8.py -v</kbd>
 <a><samp>from_roman should fail with blank string ... ok</samp>  <span class="u">①</span></a>
