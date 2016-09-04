@@ -22,7 +22,7 @@ body{counter-reset:h1 3}
 
 </p><h2 id="os">处理文件和目录</h2>
 
-<p>Python 3 带有一个模块叫做 <code>os</code>，代表 “操作系统(operating system)。” <a href="http://docs.python.org/3.1/library/os.html"><code>os</code> 模块</a> 包含非常多的函数用于获取(和修改)本地目录、文件进程、环境变量等的信息。Python 尽最大的努力在<a href="http://old.sebug.net/paper/books/dive-into-python3/installing-python.html">所有支持的操作系统</a>上提供一个统一的<abbr>API</abbr>， 这样你就可以在保证程序能够在任何的计算机上运行的同时尽量少的包含平台特定的代码。
+<p>Python 3 带有一个模块叫做 <code>os</code>，代表 “操作系统(operating system)。” <a href="http://docs.python.org/3.1/library/os.html"><code>os</code> 模块</a> 包含非常多的函数用于获取(和修改)本地目录、文件进程、环境变量等的信息。Python 尽最大的努力在所有支持的操作系统上提供一个统一的<abbr>API</abbr>， 这样你就可以在保证程序能够在任何的计算机上运行的同时尽量少的包含平台特定的代码。
 
 </p><h3 id="getcwd">当前工作目录</h3>
 
@@ -36,7 +36,7 @@ body{counter-reset:h1 3}
 
 <aside>总是有一个当前工作目录</aside>
 
-<p>如果你不知道当前工作目录， 第一步很可能会得到一个<code>ImportError</code>。 为什么? 因为 Python 将在<a href="http://old.sebug.net/paper/books/dive-into-python3/your-first-python-program.html#importsearchpath">导入搜索路径</a>中查找示例模块， 但是由于<code>examples</code> 目录没有包含在搜索路径中，查找将失败。 你可以通过下面两个方法之一来解决这个问题:
+<p>如果你不知道当前工作目录， 第一步很可能会得到一个<code>ImportError</code>。 为什么? 因为 Python 将在导入搜索路径中查找示例模块， 但是由于<code>examples</code> 目录没有包含在搜索路径中，查找将失败。 你可以通过下面两个方法之一来解决这个问题:
 
 </p><ol>
 <li>将<code>examples</code>目录加入到导入搜索路径中
