@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!-- saved from url=(0070)http://old.sebug.net/paper/books/dive-into-python3/comprehensions.html -->
+
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8">
 <title>Python基础教程：解析</title>
-<!--[if IE]><script src=http://mat3.02753.com/paper/dive-into-python3/j/html5.js></script><![endif]-->
+
 <link rel="stylesheet" href="./解析 - 深入Python 3_files/dip3.css">
 <style>
 body{counter-reset:h1 3}
@@ -22,21 +22,21 @@ body{counter-reset:h1 3}
 
 </p><h2 id="os">处理文件和目录</h2>
 
-<p>Python 3 带有一个模块叫做 <code>os</code>，代表 “操作系统(operating system)。” <a href="http://docs.python.org/3.1/library/os.html"><code>os</code> 模块</a> 包含非常多的函数用于获取(和修改)本地目录、文件进程、环境变量等的信息。Python 尽最大的努力在<a href="http://old.sebug.net/paper/books/dive-into-python3/installing-python.html">所有支持的操作系统</a>上提供一个统一的<abbr>API</abbr>， 这样你就可以在保证程序能够在任何的计算机上运行的同时尽量少的包含平台特定的代码。
+<p>Python 3 带有一个模块叫做 <code>os</code>，代表 “操作系统(operating system)。” <a href="http://docs.python.org/3.1/library/os.html"><code>os</code> 模块</a> 包含非常多的函数用于获取(和修改)本地目录、文件进程、环境变量等的信息。Python 尽最大的努力在所有支持的操作系统上提供一个统一的<abbr>API</abbr>， 这样你就可以在保证程序能够在任何的计算机上运行的同时尽量少的包含平台特定的代码。
 
 </p><h3 id="getcwd">当前工作目录</h3>
 
-<p>当你刚刚开始学习Python的时候， 你将花大量的时间在 <a href="http://old.sebug.net/paper/books/dive-into-python3/installing-python.html#idle">Python Shell</a>上。 在整本书中，你将一直看见类似下面的例子:
+<p>当你刚刚开始学习Python的时候， 你将花大量的时间在 Python Shell上。 在整本书中，你将一直看见类似下面的例子:
 
 </p><ol>
-<li>在<a href="http://old.sebug.net/paper/books/dive-into-python3/examples/"><code>examples</code> 目录导入某一个模块</a>
+<li>在<code>examples</code> 目录导入某一个模块
 </li><li>调用模块的某一个函数
 </li><li>解释输出结果
 </li></ol>
 
 <aside>总是有一个当前工作目录</aside>
 
-<p>如果你不知道当前工作目录， 第一步很可能会得到一个<code>ImportError</code>。 为什么? 因为 Python 将在<a href="http://old.sebug.net/paper/books/dive-into-python3/your-first-python-program.html#importsearchpath">导入搜索路径</a>中查找示例模块， 但是由于<code>examples</code> 目录没有包含在搜索路径中，查找将失败。 你可以通过下面两个方法之一来解决这个问题:
+<p>如果你不知道当前工作目录， 第一步很可能会得到一个<code>ImportError</code>。 为什么? 因为 Python 将在导入搜索路径中查找示例模块， 但是由于<code>examples</code> 目录没有包含在搜索路径中，查找将失败。 你可以通过下面两个方法之一来解决这个问题:
 
 </p><ol>
 <li>将<code>examples</code>目录加入到导入搜索路径中
@@ -97,7 +97,7 @@ body{counter-reset:h1 3}
 <samp class="pp">'.py'</samp></pre>
 <ol>
 <li><code>split</code> 函数分割一个完整路径并返回目录和文件名。
-</li><li>还记得我说过在函数返回多个值时应该使用<a href="http://old.sebug.net/paper/books/dive-into-python3/native-datatypes.html#multivar">多变量赋值</a> 吗 ?  <code>os.path.split()</code> 函数正是这样做的。 将<code>split</code>函数的返回值赋值给一个二元组。每个变量获得了返回元组中的对应元素的值。
+</li><li>还记得我说过在函数返回多个值时应该使用多变量赋值吗 ?  <code>os.path.split()</code> 函数正是这样做的。 将<code>split</code>函数的返回值赋值给一个二元组。每个变量获得了返回元组中的对应元素的值。
 </li><li>第一个变量<var>dirname</var>，获得了<code>os.path.split()</code> 函数返回元组中的第一个元素，文件所在的目录。
 </li><li>第二个变量<var>filename</var>，获得了<code>os.path.split()</code> 函数返回元组中的第二个元素，文件名。
 </li><li><code>os.path</code> 也包含<code>os.path.splitext()</code> 函数，它分割一个文件名并返回短文件名和扩展名。可以使用同样的技术将它们的值赋值给不同的变量。
@@ -171,12 +171,12 @@ tm_min=25, tm_sec=44, tm_wday=0, tm_yday=194, tm_isdst=1)</samp>
 <samp class="pp">'3.0 KiB'</samp></pre>
 <ol>
 <li> <code>os.stat()</code> 函数也通过<code>st_size</code> 属性返回文件大小。文件<code>feed.xml</code> 的大小是 <code>3070</code> 字节。
-</li><li>你可以将<code>st_size</code> 属性作为参数传给<a href="http://old.sebug.net/paper/books/dive-into-python3/your-first-python-program.html#divingin"><code>approximate_size()</code> 函数</a>。
+</li><li>你可以将<code>st_size</code> 属性作为参数传给<code>approximate_size()</code> 函数。
 </li></ol>
 
 <h3 id="abspath">构造绝对路径</h3>
 
-<p>在<a href="http://old.sebug.net/paper/books/dive-into-python3/comprehensions.html#osstat">前一节中</a>，<code>glob.glob()</code> 函数返回一个相对路径的列表。第一个例子的路径类似<code>'examples\feed.xml'</code>，而第二个例子的路径<code>'romantest1.py'</code>更短。只要你保持在当前工作目录中，你就可以使用这些相对路径来打开文件或者获得文件的元信息。但是当你希望构造一个从根目录开始或者是包含盘符的绝对路径时，你就需要用到<code>os.path.realpath()</code>函数了。
+<p>在前一节中，<code>glob.glob()</code> 函数返回一个相对路径的列表。第一个例子的路径类似<code>'examples\feed.xml'</code>，而第二个例子的路径<code>'romantest1.py'</code>更短。只要你保持在当前工作目录中，你就可以使用这些相对路径来打开文件或者获得文件的元信息。但是当你希望构造一个从根目录开始或者是包含盘符的绝对路径时，你就需要用到<code>os.path.realpath()</code>函数了。
 
 </p><pre class="screen"><samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">import os</kbd>
 <samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">print(os.getcwd())</kbd>
@@ -250,7 +250,7 @@ tm_min=25, tm_sec=44, tm_wday=0, tm_yday=194, tm_isdst=1)</samp>
 ('3.0 KiB', 'feed.xml')]</samp></pre>
 <ol>
 <li>这个列表解析找到当前工作目录下的所有<code>.xml</code>文件， 对于每一个文件构造一个包含文件大小(通过调用<code>os.stat()</code>获得)和绝对路径(通过调用<code>os.path.realpath()</code>)的元组。
-</li><li>这个列表解析在前一个的基础上对每一个<code>.xml</code>文件的大小应用<a href="http://old.sebug.net/paper/books/dive-into-python3/your-first-python-program.html#divingin"><code>approximate_size()</code>函数</a>。
+</li><li>这个列表解析在前一个的基础上对每一个<code>.xml</code>文件的大小应用<code>approximate_size()</code>函数。
 </li></ol>
 
 <p class="a">⁂
@@ -277,7 +277,7 @@ st_mtime=1247520344, st_ctime=1247520344))</samp>
 <a><samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">metadata_dict['alphameticstest.py'].st_size</kbd> <span class="u">⑥</span></a>
 <samp class="pp">2509</samp></pre>
 <ol>
-<li>这不是字典解析; 而是<a href="http://old.sebug.net/paper/books/dive-into-python3/comprehensions.html#listcomprehension">列表解析</a>。它找到所有名称中包含<code>test</code>的<code>.py</code>文件，然后构造包含文件名和文件元信息(通过调用<code>os.stat()</code>函数得到)的元组。
+<li>这不是字典解析; 而是列表解析。它找到所有名称中包含<code>test</code>的<code>.py</code>文件，然后构造包含文件名和文件元信息(通过调用<code>os.stat()</code>函数得到)的元组。
 </li><li>结果列表的每一个元素是元组。
 </li><li>这是一个字典解析。 除了两点以外，它的语法同列表解析很类似。首先，它被花括号而不是方括号包围; 第二，对于每一个元素它包含由冒号分隔的两个表达式，而不是列表解析的一个。冒号前的表达式(在这个例子中是<code>f</code>)是字典的键;冒号后面的表达式(在这个例子中是<code>os.stat(f)</code>)是值。
 </li><li>字典解析返回结果是字典。
@@ -349,9 +349,7 @@ st_mtime=1247520344, st_ctime=1247520344))</samp>
 </li><li><a href="http://docs.python.org/3.1/tutorial/datastructures.html#looping-techniques">Looping techniques</a>
 </li></ul>
 <p class="v"><a href="http://old.sebug.net/paper/books/dive-into-python3/native-datatypes.html" rel="prev" title="back to “Native Datatypes”"><span class="u">☜</span></a> <a href="http://old.sebug.net/paper/books/dive-into-python3/strings.html" rel="next" title="onward to “Strings”"><span class="u">☞</span></a>
-</p><p class="c">© 2001–9 <a href="http://old.sebug.net/paper/books/dive-into-python3/about.html">Mark Pilgrim</a>
-<script src="./解析 - 深入Python 3_files/jquery.js"></script>
-<script src="./解析 - 深入Python 3_files/prettify.js"></script>
-<script src="./解析 - 深入Python 3_files/dip3.js"></script> 
+</p><p >原作者：Mark Pilgrim 维护：李旭</a>
+
 
 </p></body></html>

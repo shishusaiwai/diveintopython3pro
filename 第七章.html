@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<!-- saved from url=(0065)http://old.sebug.net/paper/books/dive-into-python3/iterators.html -->
+
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8">
 <title>Python基础教程：类和迭代器</title>
-<!--[if IE]><script src=http://mat3.02753.com/paper/dive-into-python3/j/html5.js></script><![endif]-->
+
 <link rel="stylesheet" href="./Classes & Iterators - Dive Into Python 3_files/dip3.css">
 <style>
 body{counter-reset:h1 7}
 </style>
-<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="./Classes & Iterators - Dive Into Python 3_files/mobile.css">
-<link rel="stylesheet" media="print" href="./Classes & Iterators - Dive Into Python 3_files/print.css">
+
 <meta name="viewport" content="initial-scale=1.0">
 <meta name="translator" content="ablo zhou">
 <meta name="date" content="2009.11.1">
-<meta name="reply-to" content="ablozhou@gmail.com">
-<meta name="keywords" content="python3,class,iterator,类,迭代器">
+
 
 </head><body>
 <h1>Python基础教程：类<i class="baa">&amp;</i>迭代器</h1>
@@ -22,7 +20,7 @@ body{counter-reset:h1 7}
 </p><h2 id="divingin">深入</h2>
 <p class="f">生成器是一类特殊<i> 迭代器</i>。 一个产生值的函数 <code>yield</code> 是一种产生一个迭代器却不需要构建迭代器的精密小巧的方法。 我会告诉你我是什么意思。
 
-</p><p>记得 <a href="http://old.sebug.net/paper/books/dive-into-python3/generators.html#a-fibonacci-generator">菲波拉稀生成器</a>吗？ 这里是一个从无到有的迭代器：
+</p><p>记得 菲波拉稀生成器吗？ 这里是一个从无到有的迭代器：
 
 </p><p class="d">[<a href="http://old.sebug.net/paper/books/dive-into-python3/examples/fibonacci2.py">下载 <code>fibonacci2.py</code></a>]
 </p><pre class="pp"><code>class Fib:
@@ -157,7 +155,7 @@ body{counter-reset:h1 7}
 <p><em>现在</em> 你已经准备学习如何创建一个迭代器了。 迭代器就是一个定义了 <code>__iter__()</code> 方法的类。
 
 </p><aside class="ots">
-这些类的所有三种方法， <code>__init__</code>， <code>__iter__</code>， 和 <code>__next__</code>， 起始和结束均为一对下划线（<code>_</code>） 字符。 为什么这样？ 并无什么神奇之处， 只是通常表示这是“<dfn>特殊方法</dfn>。” 唯一“特殊”的地方，就是这些方法不是直接调用的； 当你使用类或实例的某些语法时，Python会自动调用他们。 <a href="http://old.sebug.net/paper/books/dive-into-python3/special-method-names.html">更多关于特殊方法</a>。
+这些类的所有三种方法， <code>__init__</code>， <code>__iter__</code>， 和 <code>__next__</code>， 起始和结束均为一对下划线（<code>_</code>） 字符。 为什么这样？ 并无什么神奇之处， 只是通常表示这是“<dfn>特殊方法</dfn>。” 唯一“特殊”的地方，就是这些方法不是直接调用的； 当你使用类或实例的某些语法时，Python会自动调用他们。更多关于特殊方法。
 </aside>
 
 <p class="d">[<a href="http://old.sebug.net/paper/books/dive-into-python3/examples/fibonacci2.py">下载 <code>fibonacci2.py</code></a>]
@@ -192,7 +190,7 @@ body{counter-reset:h1 7}
 <samp class="p">... </samp><kbd class="pp">    print(n, end=' ')</kbd>
 <samp class="pp">0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987</samp></pre>
 
-<p>为什么？完全一模一样！ 一字节一字节的与你调用 <a href="http://old.sebug.net/paper/books/dive-into-python3/generators.html#a-fibonacci-generator">Fibonacci-as-a-generator</a> （模块第一个字母大写）相同。但怎么做到的？
+<p>为什么？完全一模一样！ 一字节一字节的与你调用 Fibonacci-as-a-generator（模块第一个字母大写）相同。但怎么做到的？
 
 </p><p> <code>for</code> 循环内有魔力。下面是究竟发生了什么：
 
@@ -209,7 +207,7 @@ body{counter-reset:h1 7}
 
 <aside>iter(f) 调用 f.__iter__<br>
 next(f) 调用 f.__next__</aside>
-<p>现在到曲终的时候了。我们重写 <a href="http://old.sebug.net/paper/books/dive-into-python3/generators.html">复数规则生成器</a> 为迭代器。
+<p>现在到曲终的时候了。我们重写复数规则生成器为迭代器。
 
 </p><p class="d">[<a href="http://old.sebug.net/paper/books/dive-into-python3/examples/plural6.py">下载<code>plural6.py</code></a>]
 </p><pre class="pp"><code>class LazyRules:
@@ -372,7 +370,7 @@ rules = LazyRules()</code></pre>
 
 <blockquote class="note">
 <p><span class="u">☞</span>这真的是极乐世界？ 嗯，是或不是。 这里有一些<code>LazyRules</code> 示例需要细想的地方： 模式文件被打开（在 <code>__init__()</code>中），并持续打开直到读取最后一个规则。 当Python退出或最后一个<code>LazyRules</code> 类的实例销毁，Python 会最终关闭文件，但是那仍然可能会是一个<em>很长</em>的时间。如果该类是一个“长时间运行”的Python进程的一部分，Python可能从不退出， <code>LazyRules</code> 对象就可能一直不会释放。
-</p><p>这种情况有解决办法。 不要在 <code>__init__()</code> 中打开文件并让其在一行一行读取规则时一直打开，你可以打开文件，读取所有规则，并立即关闭文件。或你可以打开文件，读取一条规则，用<a href="http://old.sebug.net/paper/books/dive-into-python3/files.html#read"><code>tell()</code> 方法</a>保存文件位置，关闭文件，后面再次打开它，使用<a href="http://old.sebug.net/paper/books/dive-into-python3/files.html#read"><code>seek()</code> 方法</a> 继续从你离开的地方读取。 或者你不需担心这些就让文件打开，如同本示例所做。 编程即是设计， 而设计牵扯到所有的权衡和限制。让一个文件一直打开太长时间可能是问题；让你代码太复杂也可能是问题。哪一个是更大的问题，依赖于你的开发团队，你的应用，和你的运行环境。
+</p><p>这种情况有解决办法。 不要在 <code>__init__()</code> 中打开文件并让其在一行一行读取规则时一直打开，你可以打开文件，读取所有规则，并立即关闭文件。或你可以打开文件，读取一条规则，用<code>tell()</code> 方法保存文件位置，关闭文件，后面再次打开它，使用<code>seek()</code> 方法 继续从你离开的地方读取。 或者你不需担心这些就让文件打开，如同本示例所做。 编程即是设计， 而设计牵扯到所有的权衡和限制。让一个文件一直打开太长时间可能是问题；让你代码太复杂也可能是问题。哪一个是更大的问题，依赖于你的开发团队，你的应用，和你的运行环境。
 </p></blockquote>
 
 <p class="a">⁂
@@ -387,8 +385,6 @@ rules = LazyRules()</code></pre>
 
 <p class="v"><a href="http://old.sebug.net/paper/books/dive-into-python3/generators.html" rel="prev" title="back to “Closures &amp; Generators”"><span class="u">☜</span></a> <a href="http://old.sebug.net/paper/books/dive-into-python3/advanced-iterators.html" rel="next" title="onward to “Advanced Iterators”"><span class="u">☞</span></a>
 
-</p><p class="c">© 2001–9 <a href="http://old.sebug.net/paper/books/dive-into-python3/about.html">Mark Pilgrim</a>
-<script src="./Classes & Iterators - Dive Into Python 3_files/jquery.js"></script>
-<script src="./Classes & Iterators - Dive Into Python 3_files/prettify.js"></script>
-<script src="./Classes & Iterators - Dive Into Python 3_files/dip3.js"></script>
+</p><p class="c">原作者：Mark Pilgrim  维护：李旭
+
 </p></body></html>

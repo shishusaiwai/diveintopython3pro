@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!-- saved from url=(0073)http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html -->
+
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8">
 <title>Python基础教程：HTTP Web服务</title>
-<!--[if IE]><script src=http://mat3.02753.com/paper/dive-into-python3/j/html5.js></script><![endif]-->
+
 <link rel="stylesheet" href="./HTTP Web 服务 - 深入Python 3_files/dip3.css">
 <style>
 body{counter-reset:h1 14}
@@ -117,7 +117,7 @@ Cache-Control: max-age=31536000, public</samp></pre>
 
 </p><h3 id="etags">ETags</h3>
 
-<p>ETag 是另一个和<a href="http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html#last-modified">最后修改时间检查</a>达到同样目的的方法。使用ETag时，服务器在返回数据的同时在<code>ETag</code>头里返回一个哈希码(如何生成哈希码完全取决于服务器，唯一的要求是数据改变时哈希码也要改变) <code>diveintomark.org</code>引用的背景图片包含有<code>ETag</code> 头.
+<p>ETag 是另一个和最后修改时间检查达到同样目的的方法。使用ETag时，服务器在返回数据的同时在<code>ETag</code>头里返回一个哈希码(如何生成哈希码完全取决于服务器，唯一的要求是数据改变时哈希码也要改变) <code>diveintomark.org</code>引用的背景图片包含有<code>ETag</code> 头.
 
 </p><pre class="nd"><code>HTTP/1.1 200 OK
 Date: Sun, 31 May 2009 17:14:04 GMT
@@ -178,7 +178,7 @@ Cache-Control: max-age=31536000, public</samp></pre>
 
 </p><h2 id="dont-try-this-at-home">避免通过 HTTP 重复地获取数据</h2>
 
-<p>我们来举个例子，你想要通过<abbr>HTTP</abbr>下载一个资源, 比如说<a href="http://old.sebug.net/paper/books/dive-into-python3/xml.html">一个Atom 供稿</a>。作为一个供稿, 你不会只下载一次，你会一次又一次的下载它。 (大部分的供稿阅读器会美一小时检查一次更新。) 让我们先用最粗糙和最快的方法来实现它，接着再来看看怎样改进。
+<p>我们来举个例子，你想要通过<abbr>HTTP</abbr>下载一个资源, 比如说一个Atom 供稿。作为一个供稿, 你不会只下载一次，你会一次又一次的下载它。 (大部分的供稿阅读器会美一小时检查一次更新。) 让我们先用最粗糙和最快的方法来实现它，接着再来看看怎样改进。
 </p><pre class="nd screen"><samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">import urllib.request</kbd>
 <samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">a_url = 'http://diveintopython3.org/examples/feed.xml'</kbd>
 <a><samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">data = urllib.request.urlopen(a_url).read()</kbd>  <span class="u">①</span></a>
@@ -196,7 +196,7 @@ Cache-Control: max-age=31536000, public</samp></pre>
 </samp></pre>
 <ol>
 <li>在Python中通过<abbr>HTTP</abbr>下载东西是非常简单的; 实际上，只需要一行代码。<code>urllib.request</code>模块有一个方便的函数<code>urlopen()</code> ，它接受你所要获取的页面地址，然后返回一个类文件对象，您只要调用它的<code>read()</code>方法就可以获得网页的全部内容。没有比这更简单的了。
-</li><li><code>urlopen().read()</code>方法总是返回<a href="http://old.sebug.net/paper/books/dive-into-python3/strings.html#byte-arrays"><code>bytes</code>对象,而不是字符串</a>。记住字节仅仅是字节，字符只是一种抽象。 <abbr>HTTP</abbr> 服务器不关心抽象的东西。如果你请求一个资源，你得到字节。 如果你需要一个字符串，你需要确定<a href="http://feedparser.org/docs/character-encoding.html">字符编码</a>,并显式的将其转化成字符串。
+</li><li><code>urlopen().read()</code>方法总是返回<code>bytes</code>对象,而不是字符串。记住字节仅仅是字节，字符只是一种抽象。 <abbr>HTTP</abbr> 服务器不关心抽象的东西。如果你请求一个资源，你得到字节。 如果你需要一个字符串，你需要确定<a href="http://feedparser.org/docs/character-encoding.html">字符编码</a>,并显式的将其转化成字符串。
 </li></ol>
 
 <p>那么，有什么问题呢？作为开发或测试中的快速试验，没有什么不妥的地方。我总是这么干。我需要供稿的内容，然后我拿到了它。相同的技术对任何网页都有效。但一旦你考虑到你需要定期访问Web服务的时候，(<i>例如</i> 每隔1小时请求一下这个供稿), 这样的做法就显得很低效和粗暴了。
@@ -223,7 +223,7 @@ reply: 'HTTP/1.1 200 OK'
 </li><li>调式开关已经打开，有关<abbr>HTTP</abbr>请求和响应的信息会实时的打印出来。正如你所看见的，当你请求Atom 供稿时, <code>urllib.request</code>模块向服务器发送了5行数据。
 </li><li>第一行指定了你使用的<abbr>HTTP</abbr>方法和你访问的资源的路径(不包含域名)。
 </li><li>第二行指定了你请求的供稿所在的域名。
-</li><li>第三行指定客户端支持的压缩算法。我之前提到过，<a href="http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html#compression"><code>urllib.request</code> 默认不支持压缩</a>。
+</li><li>第三行指定客户端支持的压缩算法。我之前提到过，<code>urllib.request</code> 默认不支持压缩。
 </li><li>第四行说明了发送请求的库的名字。默认情况下是<code>Python-urllib</code>加上版本号。<code>urllib.request</code>和<code>httplib2</code>都支持更改用户代理, 直接向请求里面加一个<code>User-Agent</code>头就可以了(默认值会被覆盖).
 </li></ol>
 
@@ -250,18 +250,18 @@ Content-Type: application/xml</samp>
 <ol>
 <li><code>urllib.request.urlopen()</code>函数返回的<var>response</var>对象包含了服务器返回的所有<abbr>HTTP</abbr>头。它也提供了下载实际数据的方法，这个我们等一下讲。
 </li><li>服务器提供了它处理你的请求时的时间。
-</li><li>这个响应包含了<a href="http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html#last-modified"><code>Last-Modified</code></a>头。
-</li><li>这个响应包含了<a href="http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html#etags"><code>ETag</code></a>头。
+</li><li>这个响应包含了<code>Last-Modified</code>头。
+</li><li>这个响应包含了<code>ETag</code>头。
 </li><li>数据的长度是3070字节。请注意什么东西<em>没有</em>出现在这里: <code>Content-encoding</code>头。你的请求表示你只接受未压缩的数据，(<code>Accept-encoding: identity</code>), 然后当然，响应确实包含未压缩的数据。
 </li><li>这个响应包含缓存头，表明这个供稿可以缓存长达24小时。(86400 秒).
 </li><li>最后，通过调用<code>response.read()</code>下载实际的数据. 你从<code>len()</code>函数可以看出，一下子就把整个3070个字节下载下来了。
 </li></ol>
 
-<p>正如你所看见的，这个代码已经是低效的了；它请求(并接收)了未压缩的数据。我知道服务器实际上是支持<a href="http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html#compression">gzip 压缩的</a>, 但<abbr>HTTP</abbr> 压缩是一个可选项。我们不主动要求，服务器不会执行。这意味这在可以只下载941字节的情况下我们下载了3070个字节。Bad dog, no biscuit.
+<p>正如你所看见的，这个代码已经是低效的了；它请求(并接收)了未压缩的数据。我知道服务器实际上是支持gzip 压缩的, 但<abbr>HTTP</abbr> 压缩是一个可选项。我们不主动要求，服务器不会执行。这意味这在可以只下载941字节的情况下我们下载了3070个字节。Bad dog, no biscuit.
 
 </p><p>别急，还有更糟糕的。为了说明这段代码有多么的低效，让我再次请求一下同一个供稿。
 
-</p><pre class="nd screen"># continued from the <a href="http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html#whats-on-the-wire">previous example</a>
+</p><pre class="nd screen"># continued from the previous example
 <samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">response2 = urlopen('http://diveintopython3.org/examples/feed.xml')</kbd>
 <samp>send: b'GET /examples/feed.xml HTTP/1.1
 Host: diveintopython3.org
@@ -271,7 +271,7 @@ Connection: close
 reply: 'HTTP/1.1 200 OK'
 …further debugging information omitted…</samp></pre>
 
-<p>注意到这个请求有什么特别之处吗？它没有变化。它同第一个请求完全一样。没有<a href="http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html#last-modified"><code>If-Modified-Since</code>头</a>. 没有<a href="http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html#etags"><code>If-None-Match</code>头</a>. 没有尊重缓存头，也仍然没有压缩。
+<p>注意到这个请求有什么特别之处吗？它没有变化。它同第一个请求完全一样。没有<code>If-Modified-Since</code>头. 没有<code>If-None-Match</code>头. 没有尊重缓存头，也仍然没有压缩。
 
 </p><p>然后，当你发送同样的请求的时候会发生什么呢？你又一次得到同样的响应。
 
@@ -379,7 +379,7 @@ Writing /usr/local/lib/python3.1/dist-packages/httplib2-python3_0.5.0.egg-info</
 <li><code>httplib2</code>的主要接口是<code>Http</code>对象。你创建<code>Http</code>对象时总是应该传入一个目录名，具体原因你会在下一节看见。目录不需要事先存在，<code>httplib2</code>会在必要的时候创建它。
 </li><li>一旦你有了<code>Http</code>对象, 获取数据非常简单，以你要的数据的地址作为参数调用<code>request()</code>方法就可以了。这会对该<abbr>URL</abbr>执行一个<abbr>HTTP</abbr> <code>GET</code>请求. (这一章下面你会看见怎样执行其他<abbr>HTTP</abbr> 请求, 比如 <code>POST</code>。)
 </li><li><code>request()</code> 方法返回两个值。第一个是一个<code>httplib2.Response</code>对象，其中包含了服务器返回的所有<abbr>HTTP</abbr>头。比如, <code>status</code>为<code>200</code> 表示请求成功。
-</li><li><var>content</var> 变量包含了<abbr>HTTP</abbr>服务器返回的实际数据。数据以<a href="http://old.sebug.net/paper/books/dive-into-python3/strings.html#byte-arrays"><code>bytes</code>对象返回，不是字符串</a>。 如果你需要一个字符串，你需要<a href="http://feedparser.org/docs/character-encoding.html">确定字符编码</a>并自己进行转换。
+</li><li><var>content</var> 变量包含了<abbr>HTTP</abbr>服务器返回的实际数据。数据以<code>bytes</code>对象返回，不是字符串。 如果你需要一个字符串，你需要<a href="http://feedparser.org/docs/character-encoding.html">确定字符编码</a>并自己进行转换。
 </li></ol>
 
 <blockquote class="note">
@@ -390,7 +390,7 @@ Writing /usr/local/lib/python3.1/dist-packages/httplib2-python3_0.5.0.egg-info</
 
 <p>字节串。字符串。真麻烦啊。为什么<code>httplib2</code>不能替你把转换做了呢？由于决定字符编码的规则依赖于你请求的资源的类型，导致自动转化很复杂。<code>httplib2</code>怎么知道你要请求的资源的类型呢？通常类型会在<code>Content-Type</code> <abbr>HTTP</abbr> 头里面列出,但是这是<abbr>HTTP</abbr>的可选特性，并且并非所有的<abbr>HTTP</abbr>服务器都支持。如果<abbr>HTTP</abbr>响应没有包含这个头，那就留给客户端去猜了。(这通常被称为“内容嗅探(content sniffing)” ，但它从来就不是完美的。)
 
-</p><p>如果你知道你期待的资源是什么类型的(这个例子中是<abbr>XML</abbr>文档), 也许你应该直接将返回的<code>字节串(bytes)</code>对象传给<a href="http://old.sebug.net/paper/books/dive-into-python3/xml.html#xml-parse"><code>xml.etree.ElementTree.parse()</code> 函数</a>。只要(像这个文档一样)<abbr>XML</abbr> 文档自己包含字符编码信息，这是可以工作的。但是字符编码信息是一个可选特性并非所有<abbr>XML</abbr>文档包含这样的信息。如果一个<abbr>XML</abbr>文档不包含编码信息，客户端应该去查看<code>Content-Type</code> <abbr>HTTP</abbr> 头, 里面应该包含一个<code>charset</code>参数。
+</p><p>如果你知道你期待的资源是什么类型的(这个例子中是<abbr>XML</abbr>文档), 也许你应该直接将返回的<code>字节串(bytes)</code>对象传给<code>xml.etree.ElementTree.parse()</code> 函数</a>。只要(像这个文档一样)<abbr>XML</abbr> 文档自己包含字符编码信息，这是可以工作的。但是字符编码信息是一个可选特性并非所有<abbr>XML</abbr>文档包含这样的信息。如果一个<abbr>XML</abbr>文档不包含编码信息，客户端应该去查看<code>Content-Type</code> <abbr>HTTP</abbr> 头, 里面应该包含一个<code>charset</code>参数。
 
 </p><p class="ss"><a style="border:0" href="http://www.cafepress.com/feedparser"><img src="./HTTP Web 服务 - 深入Python 3_files/feedparser.jpg" alt="[I support RFC 3023 t-shirt]" width="150" height="150"></a>
 
@@ -417,7 +417,7 @@ Writing /usr/local/lib/python3.1/dist-packages/httplib2-python3_0.5.0.egg-info</
 
 <p>还记的在前一节我说过你总是应该在创建<code>httplib2.Http</code>对象是提供一个目录名吗? 缓存就是这样做的目的。
 
-</p><pre class="screen"># continued from the <a href="http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html#introducing-httplib2">previous example</a>
+</p><pre class="screen"># continued from the previous example
 <a><samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">response2, content2 = h.request('http://diveintopython3.org/examples/feed.xml')</kbd>  <span class="u">①</span></a>
 <a><samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">response2.status</kbd>                                                                 <span class="u">②</span></a>
 <samp class="pp">200</samp>
@@ -447,7 +447,7 @@ Writing /usr/local/lib/python3.1/dist-packages/httplib2-python3_0.5.0.egg-info</
 <a><samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">response.fromcache</kbd>                                                             <span class="u">⑥</span></a>
 <samp class="pp">True</samp></pre>
 <ol>
-<li>让我们打开调试开关来看看<a href="http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html#whats-on-the-wire">线路上是什么</a>。这是使用<code>httplib2</code>打开<code>http.client</code>调试开关的方法. <code>httplib2</code>会打印出发给服务器的所有数据以及一些返回的关键信息。
+<li>让我们打开调试开关来看看线路上是什么。这是使用<code>httplib2</code>打开<code>http.client</code>调试开关的方法. <code>httplib2</code>会打印出发给服务器的所有数据以及一些返回的关键信息。
 </li><li>使用同之前一样的目录创建<code>httplib2.Http</code>对象。
 </li><li>请求同之前一样的<abbr>URL</abbr>。 <em>什么也没有发生。</em> 更准确的说，没有东西发送到服务器，没有东西从服务器返回。没有任何形式的网络活动。
 </li><li>但我们还是接收到了数据，实际上是所有的数据。
@@ -461,7 +461,7 @@ Writing /usr/local/lib/python3.1/dist-packages/httplib2-python3_0.5.0.egg-info</
 <p><span class="u">☞</span>如果你想要打开<code>httplib2</code>的调试开关，你需要设置一个模块级的常量(<code>httplib2.debuglevel</code>), 然后再创建<code>httplib2.Http</code>对象。如果你希望关闭调试，你需要改变同一个模块级常量, 接着创建一个新的<code>httplib2.Http</code>对象。
 </p></blockquote>
 
-<p>你刚刚请求过这个<abbr>URL</abbr>的数据。那个请求是成功的(<code>状态码: 200</code>)。该响应不仅包含feed数据，也包含一系列<a href="http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html#caching">缓存头</a>，告诉那些关注着的人这个资源可以缓存长达24小时(<code>Cache-Control: max-age=86400</code>, 24小时所对应的秒数)。 <code>httplib2</code> 理解并尊重那些缓存头，并且它会在<code>.cache</code>目录(你在创建<code>Http</code>对象时提供的)保存之前的响应。缓存还没有过期，所以你第二次请求该<abbr>URL</abbr>的数据时, <code>httplib2</code>不会去访问网络，直接返回缓存着的数据。
+<p>你刚刚请求过这个<abbr>URL</abbr>的数据。那个请求是成功的(<code>状态码: 200</code>)。该响应不仅包含feed数据，也包含一系列缓存头，告诉那些关注着的人这个资源可以缓存长达24小时(<code>Cache-Control: max-age=86400</code>, 24小时所对应的秒数)。 <code>httplib2</code> 理解并尊重那些缓存头，并且它会在<code>.cache</code>目录(你在创建<code>Http</code>对象时提供的)保存之前的响应。缓存还没有过期，所以你第二次请求该<abbr>URL</abbr>的数据时, <code>httplib2</code>不会去访问网络，直接返回缓存着的数据。
 
 </p><p>我说的很简单，但是很显然在这简单后面隐藏了很多复杂的东西。<code>httplib2</code>会<em>自动</em>处理<abbr>HTTP</abbr>缓存，并且这是<em>默认的</em>行为. 如果由于某些原因你需要知道响应是否来自缓存，你可以检查 <code>response.fromcache</code>. 否则的话，它工作的很好。
 
@@ -508,9 +508,9 @@ reply: 'HTTP/1.1 200 OK'
 
 <h3 id="httplib2-etags"><code>httplib2</code>怎么处理<code>Last-Modified</code>和<code>ETag</code>头</h3>
 
-<p><code>Cache-Control</code>和<code>Expires</code> <a href="http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html#caching">缓存头</a> 被称为<i>新鲜度指标(freshness indicators)</i>。他们毫不含糊告诉缓存，你可以完全避免所有网络访问，直到缓存过期。而这正是你在<a href="http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html#httplib2-caching">前一节</a>所看到的: 给出一个新鲜度指标, <code>httplib2</code> <em>不会产生哪怕是一个字节的网络活动</em> 就可以提供缓存了的数据(当然除非你显式的要求<a href="http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html#bypass-the-cache">跳过缓存</a>).
+<p><code>Cache-Control</code>和<code>Expires</code>缓存头被称为<i>新鲜度指标(freshness indicators)</i>。他们毫不含糊告诉缓存，你可以完全避免所有网络访问，直到缓存过期。而这正是你在前一节</a>所看到的: 给出一个新鲜度指标, <code>httplib2</code> <em>不会产生哪怕是一个字节的网络活动</em> 就可以提供缓存了的数据(当然除非你显式的要求跳过缓存.
 
-</p><p>那如果数据<em>可能</em>已经改变了, 但实际没有呢? <abbr>HTTP</abbr> 为这种目的定义了<a href="http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html#last-modified"><code>Last-Modified</code></a>和<a href="http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html#etags"><code>Etag</code></a>头。 这些头被称为<i>验证器(validators)</i>。如果本地缓存已经不是新鲜的，客户端可以在下一个请求的时候发送验证器来检查数据实际上有没有改变。如果数据没有改变，服务器返回<code>304</code>状态码，<em>但不返回数据</em>。 所以虽然还会在网络上有一个来回，但是你最终可以少下载一点字节。
+</p><p>那如果数据<em>可能</em>已经改变了, 但实际没有呢? <abbr>HTTP</abbr> 为这种目的定义了<code>Last-Modified</code>和<code>Etag</code>头。 这些头被称为<i>验证器(validators)</i>。如果本地缓存已经不是新鲜的，客户端可以在下一个请求的时候发送验证器来检查数据实际上有没有改变。如果数据没有改变，服务器返回<code>304</code>状态码，<em>但不返回数据</em>。 所以虽然还会在网络上有一个来回，但是你最终可以少下载一点字节。
 
 </p><pre class="screen"><samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">import httplib2</kbd>
 <samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">httplib2.debuglevel = 1</kbd>
@@ -576,7 +576,7 @@ user-agent: Python-httplib2/$Rev: 259 $'
 
 <aside>“我们两种音乐都有，乡村的和西方的。”</aside>
 
-<p><abbr>HTTP</abbr>支持<a href="http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html#compression">两种类型的压缩</a>。<code>httplib2</code>都支持。
+<p><abbr>HTTP</abbr>支持两种类型的压缩。<code>httplib2</code>都支持。
 
 </p><pre class="screen"><samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">response, content = h.request('http://diveintopython3.org/')</kbd>
 <samp>connect: (diveintopython3.org, 80)
@@ -605,7 +605,7 @@ reply: 'HTTP/1.1 200 OK'</samp>
 
 <h3 id="httplib2-redirects"><code>httplib2</code>怎样处理重定向</h3>
 
-<p><abbr>HTTP</abbr> 定义了 <a href="http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html#redirects">两种类型的重定向</a>: 临时的和永久的。对于临时重定向，除了跟随它们其他没有什么特别要做的, <code>httplib2</code> 会自动处理跟随。
+<p><abbr>HTTP</abbr> 定义了 两种类型的重定向: 临时的和永久的。对于临时重定向，除了跟随它们其他没有什么特别要做的, <code>httplib2</code> 会自动处理跟随。
 
 </p><pre class="screen"><samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">import httplib2</kbd>
 <samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">httplib2.debuglevel = 1</kbd>
@@ -650,7 +650,7 @@ reply: 'HTTP/1.1 200 OK'</samp></pre>
 <ol>
 <li>你调用<code>request()</code>方法返回的<var>response</var>是最终<abbr>URL</abbr>的响应。
 </li><li><code>httplib2</code> 会将最终的 <abbr>URL</abbr>以 <code>content-location</code>加入到 <var>response</var>字典中。这不是服务器返回的头，它特定于<code>httplib2</code>。
-</li><li>没什么特别的理由, 这个供稿是<a href="http://old.sebug.net/paper/books/dive-into-python3/http-web-services.html#httplib2-compression">压缩过的</a>.
+</li><li>没什么特别的理由, 这个供稿是压缩过的.
 </li><li>并且是可缓存的. (等一下你会看到，这很重要。)
 </li></ol>
 
@@ -873,7 +873,7 @@ status=Test+update+from+Python+3'
 &lt;/user&gt;
 &lt;/status&gt;</samp></pre>
 <ol>
-<li>记住, <code>httplib2</code>返回的数据总是<a href="http://old.sebug.net/paper/books/dive-into-python3/strings.html#byte-arrays">字节串(bytes)</a>, 不是字符串。为了将其转化为字符串，你需要用合适的字符编码进行解码。Identi.ca的 <abbr>API</abbr>总是返回<abbr>UTF-8</abbr>编码的结果, 所以这部分很简单。
+<li>记住, <code>httplib2</code>返回的数据总是字节串(bytes)</a>, 不是字符串。为了将其转化为字符串，你需要用合适的字符编码进行解码。Identi.ca的 <abbr>API</abbr>总是返回<abbr>UTF-8</abbr>编码的结果, 所以这部分很简单。
 </li><li>这是我们刚发布的状态消息。
 </li><li>这是新状态消息的唯一标识符。Identi.ca 用这个标识来构造在web上查看该消息的<abbr>URL</abbr>。
 </li></ol>
@@ -897,7 +897,7 @@ status=Test+update+from+Python+3'
 <a><samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">url = 'https://identi.ca/api/statuses/destroy/{0}.xml'.format(status_id)</kbd>  <span class="u">③</span></a>
 <a><samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">resp, deleted_content = h.request(url, 'DELETE')</kbd>                          <span class="u">④</span></a></pre>
 <ol>
-<li>服务器返回的是<abbr>XML</abbr>, 对吧? 你知道<a href="http://old.sebug.net/paper/books/dive-into-python3/xml.html#xml-parse">如何解析<abbr>XML</abbr></a>.
+<li>服务器返回的是<abbr>XML</abbr>, 对吧? 你知道如何解析<abbr>XML</abbr>.
 </li><li><code>findtext()</code>方法找到对应表达式的第一个实例并抽取出它的文本内容。在这个例子中，我们查找<code>&lt;id&gt;</code>元素.
 </li><li>基于<code>&lt;id&gt;</code>元素的文本内容，我们可以构造出一个<abbr>URL</abbr>用于删除我们刚刚发布的状态消息。
 </li><li>要删除一条消息，你只需要对该<abbr>URL</abbr>执行一个<abbr>HTTP</abbr> <code>DELETE</code>请求就可以了。
@@ -963,9 +963,7 @@ user-agent: Python-httplib2/$Rev: 259 $
 </li><li><a href="http://www.ietf.org/rfc/rfc1952.txt">RFC 1952: gzip compression</a>
 </li></ul>
 
-<p class="v"><a rel="prev" href="http://old.sebug.net/paper/books/dive-into-python3/serializing.html" title="back to “序列化Python对象”"><span class="u">☜</span></a> <a rel="next" href="http://old.sebug.net/paper/books/dive-into-python3/case-study-porting-chardet-to-python-3.html" title="onward to “案例学习: 将chardet 移植到Python 3”"><span class="u">☞</span></a>
-</p><p class="c">© 2001–9 <a href="http://old.sebug.net/paper/books/dive-into-python3/about.html">Mark Pilgrim</a>
-<script src="./HTTP Web 服务 - 深入Python 3_files/jquery.js"></script>
-<script src="./HTTP Web 服务 - 深入Python 3_files/prettify.js"></script>
-<script src="./HTTP Web 服务 - 深入Python 3_files/dip3.js"></script>
+<p class="v"><a rel="prev"  title="back to “序列化Python对象”"><span class="u">☜</span></a> <a rel="next" ing-chardet-to-python-3.html" title="onward to “案例学习: 将chardet 移植到Python 3”"><span class="u">☞</span></a>
+</p><p>原作者：Mark Pilgrim 维护：李旭</a>
+
 </p></body></html>

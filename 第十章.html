@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!-- saved from url=(0067)http://old.sebug.net/paper/books/dive-into-python3/refactoring.html -->
+
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8">
-<title>Python基础教程：重构</title><!--[if IE]><script src=http://mat3.02753.com/paper/dive-into-python3/j/html5.js></script><![endif]-->
+<title>Python基础教程：重构</title>
 
 <link rel="stylesheet" href="./重构 - 深入 Python 3_files/dip3.css">
 <style>
@@ -72,7 +72,7 @@ FAILED (failures=1)</samp></pre>
             index += len(numeral)
     return result</code></pre>
 <ol>
-<li>只需两行代码：一行明确地对空字符串进行检查，另一行为 <code>raise</code> 语句。</li><li>在本书中还尚未提到该内容，因此现在让我们讲讲 <a href="http://old.sebug.net/paper/books/dive-into-python3/strings.html#formatting-strings">字符串格式化</a> 最后一点内容。从 Python 3.1 起，在格式化标示符中使用位置索引时可以忽略数字。也就是说，无需使用格式化标示符 <code>{0}</code> 来指向 <code>format()</code> 方法的第一个参数，只需简单地使用 <code>{}</code> 而 Python 将会填入正确的位置索引。该规则适用于任何数量的参数；第一个 <code>{}</code> 代表 <code>{0}</code>，第二个 <code>{}</code> 代表 <code>{1}</code>，以此类推。</li></ol>
+<li>只需两行代码：一行明确地对空字符串进行检查，另一行为 <code>raise</code> 语句。</li><li>在本书中还尚未提到该内容，因此现在让我们讲讲字符串格式化 最后一点内容。从 Python 3.1 起，在格式化标示符中使用位置索引时可以忽略数字。也就是说，无需使用格式化标示符 <code>{0}</code> 来指向 <code>format()</code> 方法的第一个参数，只需简单地使用 <code>{}</code> 而 Python 将会填入正确的位置索引。该规则适用于任何数量的参数；第一个 <code>{}</code> 代表 <code>{0}</code>，第二个 <code>{}</code> 代表 <code>{1}</code>，以此类推。</li></ol>
 
 <pre class="screen"><samp class="p">you@localhost:~/diveintopython3/examples$ </samp><kbd>python3 romantest8.py -v</kbd>
 <a><samp>from_roman should fail with blank string ... ok</samp>  <span class="u">①</span></a>
@@ -385,8 +385,6 @@ OK</samp></pre>
 <li>设计测试实例是件具体、自动且独立的工作。</li><li>在编写被测试代码 <em>之前</em> 编写测试实例。</li><li>编写用于检查好输入并验证正确结果的测试</li><li>编写用于测试“坏”输入并做出正确失败响应的测试。</li><li>编写并更新测试实例以反映新的需求</li><li>毫不留情地重构以提升性能、可扩展性、可读性、可维护性及任何缺乏的特性。</li></ul>
 
 <p class="v"><a rel="prev" href="http://old.sebug.net/paper/books/dive-into-python3/unit-testing.html" title="back to “Unit Testing”"><span class="u">☜</span></a> <a href="http://old.sebug.net/paper/books/dive-into-python3/files.html" rel="next" title="onward to “Files”"><span class="u">☞</span></a>
-</p><p class="c">© 2001–9 <a href="http://old.sebug.net/paper/books/dive-into-python3/about.html">Mark Pilgrim</a>
-<script src="./重构 - 深入 Python 3_files/jquery.js"></script>
-<script src="./重构 - 深入 Python 3_files/prettify.js"></script>
-<script src="./重构 - 深入 Python 3_files/dip3.js"></script>
+</p><p >原作者：Mark Pilgrim
+ 维护：李旭
 </p></body></html>

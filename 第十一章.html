@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!-- saved from url=(0061)http://old.sebug.net/paper/books/dive-into-python3/files.html -->
+
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8">
 <title>Python基础教程：文件</title>
-<!--[if IE]><script src=http://mat3.02753.com/paper/dive-into-python3/j/html5.js></script><![endif]-->
+
 <link rel="stylesheet" href="./文件 - 深入Python 3_files/dip3.css">
 <style>
 body{counter-reset:h1 11}
@@ -31,11 +31,11 @@ mark{display:inline}
 </li><li>文件不一定需要在本地磁盘上。也许你挂载了一个网络驱动器。它也可以是一个完全虚拟的文件系统(<a href="http://en.wikipedia.org/wiki/Filesystem_in_Userspace">an entirely virtual filesystem</a>)上的文件。只要你的操作系统认为它是一个文件，并且能够以文件的方式访问，那么，Python就能打开它。
 </li></ol>
 
-<p>但是对<code>open()</code>函数的调用不局限于<code>filename</code>。还有另外一个叫做<code>encoding</code>参数。天哪，似乎<a href="http://old.sebug.net/paper/books/dive-into-python3/strings.html#boring-stuff">非常耳熟</a>的样子！
+<p>但是对<code>open()</code>函数的调用不局限于<code>filename</code>。还有另外一个叫做<code>encoding</code>参数。天哪，似乎非常耳熟的样子！
 
 </p><h3 id="encoding">字符编码抬起了它腌臜的头…</h3>
 
-<p>字节即字节；<a href="http://old.sebug.net/paper/books/dive-into-python3/strings.html#byte-arrays">字符是一种抽象</a>。字符串由使用Unicode编码的字符序列构成。但是磁盘上的文件不是Unicode编码的字符序列。文件是字节序列。所以你可能会想，如果从磁盘上读取一个“文本文件”，Python是怎样把那个字节序列转化为字符序列的呢？实际上，它是根据特定的字符解码算法来解释这些字节序列，然后返回一串使用Unicode编码的字符（或者也称为字符串）。
+<p>字节即字节；字符是一种抽象。字符串由使用Unicode编码的字符序列构成。但是磁盘上的文件不是Unicode编码的字符序列。文件是字节序列。所以你可能会想，如果从磁盘上读取一个“文本文件”，Python是怎样把那个字节序列转化为字符序列的呢？实际上，它是根据特定的字符解码算法来解释这些字节序列，然后返回一串使用Unicode编码的字符（或者也称为字符串）。
 </p><pre># This example was created on Windows. Other platforms may
 # behave differently, for reasons outlined below.
 # 这个样例在Windows平台上创建。其他平台可能会有不同的表现，理由描述在下边
@@ -136,7 +136,7 @@ UnicodeDecodeError: 'charmap' codec can't decode byte 0x8f in position 28: chara
 </li><li>当前在第20个字节位置处。
 </li></ol>
 
-<p>你是否已经注意到了？<code>seek()</code>和<code>tell()</code>方法总是以字节的方式计数，但是，由于你是以文本文件的方式打开的，<code>read()</code>方法以<em>字符</em>的个数计数。中文字符的<a href="http://old.sebug.net/paper/books/dive-into-python3/strings.html#boring-stuff">UTF-8编码需要多个字节</a>。而文件里的英文字符每一个只需要一个字节来存储，所以你可能会产生这样的误解：<code>seek()</code>和<code>read()</code>方法对相同的目标计数。而实际上，只有对部分字符的情况是这样的。
+<p>你是否已经注意到了？<code>seek()</code>和<code>tell()</code>方法总是以字节的方式计数，但是，由于你是以文本文件的方式打开的，<code>read()</code>方法以<em>字符</em>的个数计数。中文字符的UTF-8编码需要多个字节。而文件里的英文字符每一个只需要一个字节来存储，所以你可能会产生这样的误解：<code>seek()</code>和<code>read()</code>方法对相同的目标计数。而实际上，只有对部分字符的情况是这样的。
 
 </p><p>但是，还有更糟的！
 
@@ -200,7 +200,7 @@ ValueError: I/O operation on closed file.</samp>
 
 <p>流对象有一个显式的<code>close()</code>方法，但是如果代码有缺陷，在调用<code>close()</code>方法以前就崩溃了呢？理论上，那个文件会在相当长的一段时间内一直打开着，这是没有必要地。当你在自己的机器上调试的时候，这不算什么大问题。但是当这种代码被移植到服务器上运行，也许就得三思了。
 
-</p><p>对于这种情况，Python 2有一种解决办法：<code>try..finally</code>块。这种方法在Python 3里仍然有效，也许你可以在其他人的代码，或者从比较老的被<a href="http://old.sebug.net/paper/books/dive-into-python3/case-study-porting-chardet-to-python-3.html">移植到Python 3</a>的代码中看到它。但是Python 2.5引入了一种更加简洁的解决方案，并且Python 3将它作为首选方案：<code>with</code>语句。
+</p><p>对于这种情况，Python 2有一种解决办法：<code>try..finally</code>块。这种方法在Python 3里仍然有效，也许你可以在其他人的代码，或者从比较老的被移植到Python 3的代码中看到它。但是Python 2.5引入了一种更加简洁的解决方案，并且Python 3将它作为首选方案：<code>with</code>语句。
 
 </p><pre class="nd pp"><code>with open('examples/chinese.txt', encoding='utf-8') as a_file:
     a_file.seek(17)
@@ -237,9 +237,9 @@ ValueError: I/O operation on closed file.</samp>
         line_number += 1
 <a>        print('{:&gt;4} {}'.format(line_number, a_line.rstrip()))          <span class="u">③</span></a></code></pre>
 <ol>
-<li>使用<a href="http://old.sebug.net/paper/books/dive-into-python3/files.html#with"><code>with</code>语句</a>，安全地打开这个文件，然后让Python为你关闭它。
-</li><li>为了一次读取文件的一行，使用<code>for</code>循环。是的，除了像<code>read()</code>这样显式的方法，<em>流对象也是一个<a href="http://old.sebug.net/paper/books/dive-into-python3/iterators.html">迭代器(iterator)</a></em>，它能在你每次请求一个值时分离出单独的一行。
-</li><li>使用字符串的<a href="http://old.sebug.net/paper/books/dive-into-python3/strings.html#formatting-strings"><code>format()</code>方法</a>，你可以打印出行号和行自身。格式说明符<code>{:&gt;4}</code>的意思是“使用最多四个空格使之右对齐，然后打印此参数。”变量<var>a_line</var>是包括回车符等在内的完整的一行。字符串方法<code>rstrip()</code>可以去掉尾随的空白符，包括回车符。
+<li>使用<code>with</code>语句，安全地打开这个文件，然后让Python为你关闭它。
+</li><li>为了一次读取文件的一行，使用<code>for</code>循环。是的，除了像<code>read()</code>这样显式的方法，<em>流对象也是一个迭代器(iterator)</em>，它能在你每次请求一个值时分离出单独的一行。
+</li><li>使用字符串的<code>format()</code>方法，你可以打印出行号和行自身。格式说明符<code>{:&gt;4}</code>的意思是“使用最多四个空格使之右对齐，然后打印此参数。”变量<var>a_line</var>是包括回车符等在内的完整的一行。字符串方法<code>rstrip()</code>可以去掉尾随的空白符，包括回车符。
 </li></ol>
 
 <pre class="screen"><samp class="p">you@localhost:~/diveintopython3$ </samp><kbd class="pp">python3 examples/oneline.py</kbd>
@@ -262,7 +262,7 @@ ValueError: I/O operation on closed file.</samp>
     print('{:&gt;4} {}'.format(line_number, a_line.rstrip()))
 ValueError: zero length field name in format</samp></pre>
 <p>如果结果是这样，也许你正在使用Python 3.0。你真的应该升级到Python 3.1。
-</p><p>Python 3.0支持字符串格式化，但是只支持<a href="http://old.sebug.net/paper/books/dive-into-python3/strings.html#formatting-strings">显式编号了的格式说明符</a>。Python 3.1允许你在格式说明符里省略参数索引号。作为比照，下面是一个Python 3.0兼容的版本。
+</p><p>Python 3.0支持字符串格式化，但是只支持显式编号了的格式说明符。Python 3.1允许你在格式说明符里省略参数索引号。作为比照，下面是一个Python 3.0兼容的版本。
 </p><pre class="pp nd"><code>print('{<mark>0</mark>:&gt;4} {<mark>1</mark>}'.format(line_number, a_line.rstrip()))</code></pre>
 </blockquote>
 
@@ -568,8 +568,6 @@ print('C')</code></pre>
 
 <p class="v"><a href="http://old.sebug.net/paper/books/dive-into-python3/refactoring.html" rel="prev" title="back to “Refactoring”"><span class="u">☜</span></a> <a href="http://old.sebug.net/paper/books/dive-into-python3/xml.html" rel="next" title="onward to “XML”"><span class="u">☞</span></a>
 
-</p><p class="c">© 2001–9 <a href="http://old.sebug.net/paper/books/dive-into-python3/about.html">Mark Pilgrim</a>
-<script src="./文件 - 深入Python 3_files/jquery.js"></script>
-<script src="./文件 - 深入Python 3_files/prettify.js"></script>
-<script src="./文件 - 深入Python 3_files/dip3.js"></script>
+</p><p >原作者：Mark Pilgrim  维护：李旭
+
 </p></code></body></html>

@@ -14,8 +14,8 @@ body{counter-reset:h1 9}
 <h1>Python基础教程：单元测试</h1>
 <blockquote><span class="u"></span><span style="color: rgb(255, 0, 0); font-size: 14px;">本书由深入Python3改编而来，更新了其中过时的内容，为大陆地区做了本土化定制。<br/></span><span style="color: rgb(255, 0, 0); font-size: 14px;">本书遵循 </span><a style="text-decoration: underline; color: rgb(255, 0, 0); font-size: 14px;" rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><span style="color: rgb(255, 0, 0); font-size: 14px;">Creative Commons Attribution Share-Alike</span></a><span style="color: rgb(255, 0, 0); font-size: 14px;"> 协议自由授权。</span></blockquote>
 <p id="toc">&nbsp;
-</p><h2 id="divingin">（不要）深入</h2>
-<p class="f">在此章节中，你将要编写及调试一系列用于阿拉伯数字与罗马数字相互转换的方法。你阅读了在<a href="http://old.sebug.net/paper/books/dive-into-python3/regular-expressions.html#romannumerals">“案例学习：罗马数字”</a>中关于构建及校验罗马数字的机制。那么，现在考虑扩展该机制为一个双向的方法。</p><p><a href="http://old.sebug.net/paper/books/dive-into-python3/regular-expressions.html#romannumerals">罗马数字的规则</a>引出很多有意思的结果：</p><ol>
+</p><h2 id="divingin">深入</h2>
+<p class="f">案例学习：罗马数字”中关于构建及校验罗马数字的机制。那么，现在考虑扩展该机制为一个双向的方法。</p><p>罗马数字的规则引出很多有意思的结果：</p><ol>
 <li>只有一种正确的途径用阿拉伯数字表示罗马数字。</li><li>反过来一样，一个字符串类型的有效的罗马数字也仅可以表示一个阿拉伯数字（即，这种转换方式也是只有一种）。</li><li>只有有限范围的阿拉伯数字可以以罗马数字表示，那就是1-3999。而罗马数字表示大数字却有几种方式。例如，为了表示一个数字连续出现时正确的值则需要乘以<code>1000</code>。为了达到本节的目的，限定罗马数字在 1 到 3999 之间。</li><li>无法用罗马数字来表示 0 。</li><li>无法用罗马数字来表示负数 。</li><li>无法用罗马数字来表示分数或非整数 。</li></ol>
 <p>现在，开始设计 <code>roman.py</code> 模块。它有两个主要的方法：<code>to_roman()</code> 及 <code>from_roman()</code>。<code>to_roman()</code> 方法接收一个从 <code>1</code> 到 <code>3999</code> 之间的整型数字，然后返回一个字符串类型的罗马数字。</p><p>在这里停下来。现在让我们进行一些意想不到的操作：编写一个测试用例来检测 <code>to_roman</code> 函数是否实现了你想要的功能。你想得没错：你正在编写测试尚未编写代码的代码。</p><p>这就是所谓的<i>测试驱动开发</i> 或 <abbr>TDD</abbr>。那两个转换方法（ <code>to_roman()</code> 及之后的 <code>from_roman()</code>）可以独立于任何使用它们的大程序而作为一个单元来被编写及测试。Python 自带一个单元测试框架，被恰当地命名为 <code>unittest</code> 模块。</p><p>单元测试是整个以测试为中心的开发策略中的一个重要部分。编写单元测试应该安排在项目的早期，同时要让它随同代码及需求变更一起更新。很多人都坚持测试代码应该先于被测试代码的，而这种风格也是我在本节中所主张的。但是，不管你何时编写，单元测试都是有好处的。</p><ul>
 <li>在编写代码之前，通过编写单元测试来强迫你使用有用的方式细化你的需求。</li><li>在编写代码时，单元测试可以使你避免过度编码。当所有测试用例通过时，实现的方法就完成了。</li><li>重构代码时，单元测试用例有助于证明新版本的代码跟老版本功能是一致的。</li><li>在维护代码期间，如果有人对你大喊：你最新的代码修改破坏了原有代码的状态，那么此时单元测试可以帮助你反驳（“<em>先生</em>，所有单元测试用例通过了我才提交代码的...”）。</li><li>在团队编码中，缜密的测试套件可以降低你的代码影响别人代码的机会，这是因为你需要优先执行别人的单元测试用例。（我曾经在代码冲刺见过这种实践。一个团队把任务分解，每个人领取其中一小部分任务，同时为其编写单元测试;然后，团队相互分享他们的单元测试用例。这样，所有人都可以在编码过程中提前发现谁的代码与其他人的不可以良好工作。）</li></ul>
@@ -271,7 +271,7 @@ OK</samp></pre>
 
 </p><h2 id="romantest3">More Halting, More Fire</h2>
 
-<p>与测试超大值一样，也必须测试超小值。<a href="http://old.sebug.net/paper/books/dive-into-python3/unit-testing.html#divingin">正如我们在功能需求中提到的那样</a>，罗马数字无法表达 0 或负数。</p><pre class="nd screen"><samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">import roman2</kbd>
+<p>与测试超大值一样，也必须测试超小值。正如我们在功能需求中提到的那样，罗马数字无法表达 0 或负数。</p><pre class="nd screen"><samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">import roman2</kbd>
 <samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">roman2.to_roman(0)</kbd>
 <samp class="pp">''</samp>
 <samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">roman2.to_roman(-1)</kbd>
@@ -358,7 +358,7 @@ OK</samp></pre>
 
 </p><h2 id="romantest4">还有一件事情……</h2>
 
-<p>还有一个把阿拉伯数字转换成罗马数字的 <a href="http://old.sebug.net/paper/books/dive-into-python3/unit-testing.html#divingin">功能性需求</a> ：处理非整型数字。
+<p>还有一个把阿拉伯数字转换成罗马数字的 功能性需求：处理非整型数字。
 </p><pre class="screen"><samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">import roman3</kbd>
 <a><samp class="p">&gt;&gt;&gt; </samp><kbd class="pp">roman3.to_roman(0.5)</kbd>  <span class="u">①</span></a>
 <samp class="pp">''</samp>
@@ -655,8 +655,6 @@ Ran 10 tests in 0.066s
 OK</samp></pre>
 
 <p>本年度的虎头蛇尾奖颁发给……单词“OK”，在所有测试通过时，它由 <code>unittest</code> 模块输出。</p><p class="v"><a href="http://old.sebug.net/paper/books/dive-into-python3/advanced-iterators.html" rel="prev" title="back to “Advanced Iterators”"><span class="u">☜</span></a> <a href="http://old.sebug.net/paper/books/dive-into-python3/refactoring.html" rel="next" title="onward to “Refactoring”"><span class="u">☞</span></a>
-</p><p class="c">© 2001–9 <a href="http://old.sebug.net/paper/books/dive-into-python3/about.html">Mark Pilgrim</a>
-<script src="./单元测试 —— 深入 Python 3_files/jquery.js"></script>
-<script src="./单元测试 —— 深入 Python 3_files/prettify.js"></script>
-<script src="./单元测试 —— 深入 Python 3_files/dip3.js"></script>
+</p><p class="c">原作者： Mark Pilgrim   维护：李旭
+
 </p></body></html>
